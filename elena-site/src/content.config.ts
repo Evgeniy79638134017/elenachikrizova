@@ -17,7 +17,7 @@ const cases = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    category: z.enum(['endokrinologiya', 'girudoterapiya', 'nutriciologiya', 'maraton']),
+    category: z.enum(['endokrinologiya', 'girudoterapiya', 'nutriciologiya']),
     result: z.string(),
     disclaimer: z.string().default('Результаты индивидуальны и зависят от особенностей организма'),
     order: z.number().default(0),

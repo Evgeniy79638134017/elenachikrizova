@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const categoryLabels: Record<string, string> = {
+  endokrinologiya: 'Эндокринология',
+  girudoterapiya: 'Гирудотерапия',
+  nutriciologiya: 'Нутрициология',
+  lifestyle: 'Образ жизни',
+};
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+};
+---
+
+<BaseLayout
+  title={`${post.data.title} — Елена Чекризова`}
+  description={post.data.description}
+>
+  <article class="bg-white">
+    <div class="max-w-3xl mx-auto px-4 md:px-6 py-16 md:py-24">
+      <!-- Back link -->
+      <a href="/blog" class="text-primary text-sm hover:underline">
+        ← Назад в блог
+      </a>
+
+      <!-- Header -->
+      <div class="mt-6">
+        <div class="flex items-center gap-3">
+          <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+            {categoryLabels[post.data.category]}
+          </span>
+          <time class="text-text-light text-sm">
+            {formatDate(post.data.date)}
+          </time>
+        </div>
+        <h1 class="font-heading text-3xl md:text-4xl font-bold text-deep mt-4">
+          {post.data.title}
+        </h1>
+        <p class="text-text-secondary text-lg mt-4">
+          {post.data.description}
+        </p>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-warm-dark/20 my-8"></div>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <Content />
+      </div>
+
+      <!-- CTA -->
+      <div class="border-t border-warm-dark/20 my-12 pt-12 text-center">
+        <h2 class="font-heading text-2xl font-bold text-deep">
+          Есть вопросы?
+        </h2>
+        <p class="text-text-secondary mt-2">
+          Запишитесь на консультацию — разберёмся вместе
+        </p>
+        <a
+          href="/kontakty"
+          class="inline-block bg-primary text-white rounded-xl px-8 py-3.5 font-semibold hover:bg-primary-dark transition mt-6"
+        >
+          Записаться на приём
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .prose {
+    color: #5A6B7D;
+    line-height: 1.75;
+  }
+  .prose h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #1E3A5F;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .prose h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #1E3A5F;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose p {
+    margin-bottom: 1.25rem;
+  }
+  .prose strong {
+    color: #1E3A5F;
+    font-weight: 600;
+  }
+  .prose ul, .prose ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+  .prose blockquote {
+    border-left: 4px solid #6BA5A5;
+    padding-left: 1rem;
+    font-style: italic;
+    color: #5A6B7D;
+    margin: 1.5rem 0;
+  }
+  .prose a {
+    color: #6BA5A5;
+    text-decoration: underline;
+  }
+  .prose a:hover {
+    color: #4F8A8A;
+  }
+  .prose em {
+    color: #8A9BAD;
+    font-size: 0.875rem;
+  }
+</style>

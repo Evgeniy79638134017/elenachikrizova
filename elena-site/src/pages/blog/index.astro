@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const categoryLabels: Record<string, string> = {
+  endokrinologiya: 'Эндокринология',
+  girudoterapiya: 'Гирудотерапия',
+  nutriciologiya: 'Нутрициология',
+  lifestyle: 'Образ жизни',
+};
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+};
+---
+
+<BaseLayout
+  title="Блог — Елена Чекризова"
+  description="Статьи о здоровье от врача-эндокринолога. Эндокринология, гирудотерапия, нутрициология, образ жизни."
+>
+  <!-- Mini Hero -->
+  <section class="bg-gradient-to-b from-bg to-warm-light">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
+      <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep">
+        Блог
+      </h1>
+      <p class="text-text-secondary text-lg mt-4 max-w-2xl">
+        Полезные статьи о здоровье от врача с 30-летним стажем
+      </p>
+    </div>
+  </section>
+
+  <!-- Posts Grid -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedPosts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="group">
+            <article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition h-full flex flex-col">
+              <div class="bg-warm-light h-48 flex items-center justify-center">
+                <span class="text-warm-dark text-sm">Изображение</span>
+              </div>
+              <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center gap-3">
+                  <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">
+                    {categoryLabels[post.data.category]}
+                  </span>
+                </div>
+                <time class="text-text-light text-xs mt-2">
+                  {formatDate(post.data.date)}
+                </time>
+                <h2 class="font-heading text-lg font-bold text-deep mt-2 group-hover:text-primary transition">
+                  {post.data.title}
+                </h2>
+                <p class="text-text-secondary text-sm mt-2 line-clamp-3 flex-grow">
+                  {post.data.description}
+                </p>
+              </div>
+            </article>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
