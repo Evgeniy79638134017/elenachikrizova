@@ -1,0 +1,50 @@
+---
+const testimonials = [
+  {
+    quote: 'Просили и до сих пор пишут и звонят: «Мы хотим продолжение!»',
+    name: 'Участники марафона',
+    context: '',
+  },
+  {
+    quote: 'Выбираю именно Елену как доктора. Приезжаю из района специально к ней.',
+    name: 'Пациент из района',
+    context: '',
+  },
+  {
+    quote: 'Благодарны за открытость и честность. Врач всё объясняет от и до.',
+    name: 'Отзыв с ПроДокторов',
+    context: '',
+  },
+];
+---
+
+<section class="bg-white">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
+    <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      Что говорят пациенты
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8 mt-12">
+      {testimonials.map((item) => (
+        <div>
+          <span class="text-primary text-6xl font-heading leading-none opacity-30">"</span>
+          <p class="text-text-secondary italic -mt-6">
+            {item.quote}
+          </p>
+          <p class="text-deep font-semibold mt-4">
+            {item.name}
+          </p>
+          {item.context && (
+            <p class="text-text-light text-sm">
+              {item.context}
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <p class="text-primary font-semibold text-center mt-8">
+      3 место в рейтинге ПроДокторов по Южно-Сахалинску
+    </p>
+  </div>
+</section>

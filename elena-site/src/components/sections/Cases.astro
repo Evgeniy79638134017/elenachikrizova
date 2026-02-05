@@ -1,0 +1,58 @@
+---
+const cases = [
+  {
+    badge: 'Марафон',
+    title: '66 участников — 66 результатов',
+    description: 'Все участники марафона «Энергия стройности» получили положительный результат. Систематизировали питание, получили новое качество жизни.',
+  },
+  {
+    badge: 'Эндокринология',
+    title: 'Спасение от ампутации',
+    description: 'Пациентка с сахаром 20 и гангреной на пальце. Через 2 часа после приёма была на операционном столе. Потеряла два пальца вместо целой ноги.',
+  },
+  {
+    badge: 'Гирудотерапия',
+    title: 'Капитан дальнего плавания',
+    description: 'Пациент приезжает за 400 км раз в неделю. Обучаю его ставить пиявки самостоятельно, чтобы помогать себе даже в длительном плавании.',
+  },
+];
+---
+
+<section class="bg-warm-light">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
+    <div class="text-center">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep">
+        Истории пациентов
+      </h2>
+      <p class="text-text-secondary text-lg mt-4">
+        Реальные результаты системного подхода
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 mt-12">
+      {cases.map((item) => (
+        <div class="bg-white rounded-2xl shadow-md p-8">
+          <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">
+            {item.badge}
+          </span>
+          <h3 class="font-heading text-xl font-semibold text-deep mt-4">
+            {item.title}
+          </h3>
+          <p class="text-text-secondary mt-3">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-text-light text-xs text-center mt-8">
+      Результаты индивидуальны и зависят от особенностей организма
+    </p>
+    <a
+      href="/kejsy"
+      class="text-primary font-semibold hover:text-primary-dark text-center block mt-4 transition"
+    >
+      Все кейсы →
+    </a>
+  </div>
+</section>
