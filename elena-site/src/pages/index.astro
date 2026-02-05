@@ -3,14 +3,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Елена Чекризова — Врач-эндокринолог · 30 лет опыта">
-  <main class="min-h-screen flex items-center justify-center">
-    <div class="text-center">
-      <h1 class="font-heading text-4xl md:text-5xl text-primary font-semibold mb-4">
+  <section class="min-h-screen flex items-center justify-center">
+    <div class="text-center px-4">
+      <h1 class="font-heading text-4xl md:text-5xl text-deep font-bold mb-4">
         Елена Чекризова
       </h1>
-      <p class="text-xl text-text-light">
+      <p class="text-xl text-text-secondary mb-8">
         Врач-эндокринолог · 30 лет опыта
       </p>
+      <a
+        href="/kontakty"
+        class="inline-block bg-primary text-white rounded-xl px-8 py-3.5 font-semibold hover:bg-primary-dark transition"
+      >
+        Записаться на приём
+      </a>
     </div>
-  </main>
+  </section>
 </BaseLayout>

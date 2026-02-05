@@ -1,0 +1,130 @@
+---
+const navLinks = [
+  { href: '/', label: 'Главная' },
+  { href: '/about', label: 'Обо мне' },
+  { href: '/uslugi/endokrinologiya', label: 'Услуги' },
+  { href: '/kejsy', label: 'Кейсы' },
+  { href: '/blog', label: 'Блог' },
+  { href: '/kontakty', label: 'Контакты' },
+];
+
+const mobileNavLinks = [
+  { href: '/', label: 'Главная' },
+  { href: '/about', label: 'Обо мне' },
+  { href: '/uslugi/endokrinologiya', label: 'Эндокринология' },
+  { href: '/uslugi/girudoterapiya', label: 'Гирудотерапия' },
+  { href: '/uslugi/nutriciologiya', label: 'Нутрициология' },
+  { href: '/kejsy', label: 'Кейсы' },
+  { href: '/blog', label: 'Блог' },
+  { href: '/kontakty', label: 'Контакты' },
+];
+---
+
+<header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex flex-col">
+      <span class="font-heading font-semibold text-deep text-lg">Елена Чекризова</span>
+      <span class="font-body text-text-secondary text-xs">врач-эндокринолог</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex gap-6">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm text-text-secondary hover:text-primary transition"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Desktop CTA -->
+    <a
+      href="/kontakty"
+      class="hidden md:block bg-primary text-white rounded-xl px-6 py-2.5 text-sm font-semibold hover:bg-primary-dark transition"
+    >
+      Записаться
+    </a>
+
+    <!-- Mobile Burger Button -->
+    <button
+      id="burger-btn"
+      class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+      aria-label="Открыть меню"
+    >
+      <span class="w-6 h-0.5 bg-deep transition-all"></span>
+      <span class="w-6 h-0.5 bg-deep transition-all"></span>
+      <span class="w-6 h-0.5 bg-deep transition-all"></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 bg-white z-50 hidden">
+  <div class="flex flex-col h-full">
+    <!-- Mobile Menu Header -->
+    <div class="flex items-center justify-between px-4 h-16">
+      <a href="/" class="flex flex-col">
+        <span class="font-heading font-semibold text-deep text-lg">Елена Чекризова</span>
+        <span class="font-body text-text-secondary text-xs">врач-эндокринолог</span>
+      </a>
+      <button
+        id="close-btn"
+        class="flex items-center justify-center w-10 h-10"
+        aria-label="Закрыть меню"
+      >
+        <svg class="w-6 h-6 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Links -->
+    <nav class="flex flex-col items-center justify-center flex-1 gap-6">
+      {mobileNavLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-xl text-deep hover:text-primary transition"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile Menu CTA -->
+    <div class="p-6">
+      <a
+        href="/kontakty"
+        class="block w-full text-center bg-primary text-white rounded-xl px-6 py-3.5 font-semibold hover:bg-primary-dark transition"
+      >
+        Записаться
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const burgerBtn = document.getElementById('burger-btn');
+  const closeBtn = document.getElementById('close-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  burgerBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.add('hidden');
+    document.body.style.overflow = '';
+  });
+
+  // Close menu when clicking on a link
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
