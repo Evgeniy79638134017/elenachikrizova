@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const stats = [
+  {
+    value: '80%',
+    label: 'дефициты',
+    description: 'По данным исследований, до 80% населения имеют дефицит хотя бы одного микроэлемента',
+  },
+  {
+    value: '🔬',
+    label: 'чекап',
+    description: 'Начинаем с анализов: ферритин, витамин D, B12, гомоцистеин, гликированный гемоглобин и другие маркеры',
+  },
+  {
+    value: '⚙️',
+    label: 'система',
+    description: 'Не отдельные добавки, а комплексная программа: детокс → восполнение → поддержка',
+  },
+];
+
+const products = [
+  {
+    title: 'Детокс-программа',
+    description: 'Первый этап: очищение организма от токсинов и подготовка к усвоению нутриентов',
+  },
+  {
+    title: 'Витаминно-минеральные комплексы',
+    description: 'Восполнение дефицитов на основе результатов чекапа. Индивидуальный подбор',
+  },
+  {
+    title: 'Согенетик',
+    description: 'Клеточное питание нового поколения. Поддержка на уровне ДНК',
+  },
+  {
+    title: 'Комплексные программы',
+    description: 'От детокса до полного восстановления. Каждая программа под контролем врача',
+  },
+];
+
+const integrationBlocks = [
+  {
+    title: 'Классическая медицина',
+    description: 'Диагностика, анализы, контроль',
+  },
+  {
+    title: 'Нутрициология',
+    description: 'Коррекция дефицитов, клеточное питание',
+  },
+  {
+    title: 'Гирудотерапия',
+    description: 'Микроциркуляция, ферменты, детокс',
+  },
+];
+---
+
+<BaseLayout
+  title="Нутрициология — Елена Чекризова"
+  description="Нутрициология и клеточное питание. Системный подход: чекап, коррекция дефицитов, продукция AgenYZ. Врач-эндокринолог с 30-летним стажем."
+>
+  <!-- Section 1: Mini Hero -->
+  <section class="bg-gradient-to-b from-bg to-warm-light">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+            Клеточное питание · Системный подход
+          </span>
+          <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep mt-4">
+            Нутрициология
+          </h1>
+          <p class="text-text-secondary text-lg mt-4">
+            Восполнение дефицитов на клеточном уровне. Не просто витамины — системная поддержка организма на основе чекапа и анализов.
+          </p>
+          <a
+            href="/kontakty"
+            class="inline-block bg-primary text-white rounded-xl px-8 py-3.5 font-semibold hover:bg-primary-dark transition mt-6"
+          >
+            Записаться на консультацию
+          </a>
+        </div>
+        <div class="flex justify-center lg:justify-end">
+          <div class="bg-warm-light rounded-3xl aspect-square w-full max-w-sm shadow-xl flex items-center justify-center">
+            <span class="text-warm-dark text-lg">Фото</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Why nutrition is not enough -->
+  <section class="bg-white">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Почему питания недостаточно
+      </h2>
+      <p class="text-text-secondary text-center max-w-2xl mx-auto mt-4">
+        Даже при сбалансированном рационе организм может испытывать дефициты. Стрессы, экология, хронические заболевания — всё это увеличивает потребность в нутриентах. Нутрициология помогает восполнить то, что не покрывает обычная еда.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8 mt-12">
+        {stats.map((item) => (
+          <div class="bg-warm-light rounded-2xl p-6 text-center">
+            <div class={item.value === '80%' ? 'text-primary text-4xl font-bold font-heading' : 'text-4xl'}>
+              {item.value}
+            </div>
+            <p class="text-text-secondary text-sm mt-1">{item.label}</p>
+            <p class="text-text-secondary text-sm mt-3">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: AgenYZ Products -->
+  <section class="bg-warm-light">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Клеточное питание AgenYZ
+      </h2>
+      <p class="text-text-secondary text-center mt-3">
+        Продукция, которую я использую сама и рекомендую пациентам
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-12">
+        {products.map((product) => (
+          <div class="bg-white rounded-2xl shadow-md p-6">
+            <h3 class="font-semibold text-deep">{product.title}</h3>
+            <p class="text-text-secondary text-sm mt-2">{product.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-text-light text-xs text-center mt-8">
+        БАД не является лекарственным средством. Перед применением проконсультируйтесь со специалистом.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 4: Integration with medicine -->
+  <section class="bg-white">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Нет грани между методами
+      </h2>
+
+      <blockquote class="max-w-2xl mx-auto mt-8 border-l-4 border-primary pl-6">
+        <p class="text-text-secondary text-lg italic">
+          «Гирудотерапия и нутрициология усиливают друг друга. Пиявки улучшают микроциркуляцию — нутриенты лучше усваиваются. Это и есть системный подход.»
+        </p>
+        <footer class="text-deep font-semibold mt-4">Елена Чекризова</footer>
+      </blockquote>
+
+      <div class="grid md:grid-cols-5 gap-4 items-center mt-12">
+        <div class="text-center">
+          <h3 class="font-semibold text-deep">{integrationBlocks[0].title}</h3>
+          <p class="text-text-secondary text-sm mt-1">{integrationBlocks[0].description}</p>
+        </div>
+        <div class="text-center">
+          <span class="text-primary text-2xl font-bold">+</span>
+        </div>
+        <div class="text-center">
+          <h3 class="font-semibold text-deep">{integrationBlocks[1].title}</h3>
+          <p class="text-text-secondary text-sm mt-1">{integrationBlocks[1].description}</p>
+        </div>
+        <div class="text-center">
+          <span class="text-primary text-2xl font-bold">+</span>
+        </div>
+        <div class="text-center">
+          <h3 class="font-semibold text-deep">{integrationBlocks[2].title}</h3>
+          <p class="text-text-secondary text-sm mt-1">{integrationBlocks[2].description}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Personal experience -->
+  <section class="bg-warm-light">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Личный опыт
+      </h2>
+
+      <div class="bg-white rounded-2xl shadow-md p-8 mt-8 max-w-2xl mx-auto">
+        <p class="text-text-secondary italic">
+          «Пациенты часто спрашивают, сколько мне лет и почему я так выгляжу. Ответ простой: я сама использую всё, что рекомендую. Клеточное питание, гирудотерапия, кундалини-йога, подъём в 5 утра — это не теория, это мой образ жизни.»
+        </p>
+
+        <div class="border-t border-warm-dark/20 my-6"></div>
+
+        <p class="text-deep font-semibold text-lg">
+          «Я не продаю то, во что не верю. Я живу этим.»
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: CTA -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 text-center">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-white">
+        Запишитесь на консультацию по нутрициологии
+      </h2>
+      <p class="text-white/80 mt-4">
+        Чекап + подбор программы под ваше состояние
+      </p>
+      <p class="text-white/60 text-sm mt-2">
+        Стоимость приёма: 2 700 ₽
+      </p>
+      <a
+        href="/kontakty"
+        class="inline-block bg-white text-primary rounded-xl px-10 py-4 font-semibold hover:bg-warm-light transition mt-8"
+      >
+        Записаться
+      </a>
+    </div>
+  </section>
+</BaseLayout>
