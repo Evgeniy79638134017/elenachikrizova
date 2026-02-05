@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const howItWorks = [
+  {
+    icon: '180+',
+    title: 'Ферментов в слюне пиявки',
+    description: 'Гирудин, дестабилаза, гиалуронидаза и ещё более 180 биологически активных веществ. Каждый работает на своём уровне.',
+  },
+  {
+    icon: 'III',
+    title: 'Круг кровообращения',
+    description: 'Пиявка включает третий, капиллярный круг кровообращения. Улучшается микроциркуляция, уходят застои.',
+  },
+  {
+    icon: '∞',
+    title: 'Невоспроизводимо',
+    description: 'Слюна пиявки — уникальный комплекс, который невозможно синтезировать искусственно. Только живые медицинские пиявки.',
+  },
+];
+
+const indications = [
+  {
+    title: 'Гинекология',
+    description: 'Миома, эндометриоз, хронические воспаления, бесплодие, нарушения цикла.',
+  },
+  {
+    title: 'Варикоз',
+    description: 'Варикозная болезнь, тяжесть в ногах, отёки, профилактика тромбозов.',
+  },
+  {
+    title: 'Суставы',
+    description: 'Артрозы, артриты, остеохондроз, боли в спине, грыжи позвоночника.',
+  },
+  {
+    title: 'Сердце и сосуды',
+    description: 'Гипертония, ИБС, атеросклероз, профилактика инсультов и инфарктов.',
+  },
+  {
+    title: 'Головные боли',
+    description: 'Мигрени, головные боли напряжения, вегето-сосудистая дистония.',
+  },
+  {
+    title: 'Кожа',
+    description: 'Фурункулёз, псориаз, трофические язвы, рубцы, постакне.',
+  },
+  {
+    title: 'Эндокринология',
+    description: 'Узлы щитовидной железы, мастопатия, метаболический синдром.',
+  },
+  {
+    title: 'Урология',
+    description: 'Простатит, аденома простаты, хронические воспаления.',
+  },
+  {
+    title: 'Реабилитация',
+    description: 'После операций, травм, инсультов. Ускоряет восстановление.',
+  },
+];
+
+const stories = [
+  {
+    title: 'Мама, 83 года',
+    description: 'Была вся отёкшая. За 15 сеансов отёки ушли, стала легче двигаться. Дочь не верила, пока не увидела результат своими глазами.',
+  },
+  {
+    title: 'Капитан, 45 лет',
+    description: 'Гипертоник со стажем. После курса гирудотерапии давление стабилизировалось, смог снизить дозу препаратов. Продолжаем профилактические курсы.',
+  },
+  {
+    title: 'Врачи лечатся пиявками',
+    description: 'Многие мои коллеги-врачи приходят на гирудотерапию. Кардиологи, хирурги, гинекологи — те, кто знает медицину изнутри.',
+  },
+];
+---
+
+<BaseLayout
+  title="Гирудотерапия — Елена Чекризова"
+  description="Гирудотерапия от врача с 15+ летним опытом. Обучение в Сеченовском университете. Варикоз, гинекология, суставы. Южно-Сахалинск."
+>
+  <!-- Section 1: Mini Hero -->
+  <section class="bg-gradient-to-b from-bg to-warm-light">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+            15+ лет практики · Сеченовский университет
+          </span>
+          <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep mt-4">
+            Гирудотерапия
+          </h1>
+          <p class="text-text-secondary text-lg mt-4">
+            Лечение медицинскими пиявками — метод с доказанной эффективностью. Использую при варикозе, гинекологических проблемах, болях в суставах и многом другом.
+          </p>
+          <a
+            href="/kontakty"
+            class="inline-block bg-primary text-white rounded-xl px-8 py-3.5 font-semibold hover:bg-primary-dark transition mt-6"
+          >
+            Записаться на приём
+          </a>
+        </div>
+        <div class="flex justify-center lg:justify-end">
+          <div class="bg-warm-light rounded-3xl aspect-square w-full max-w-sm shadow-xl flex items-center justify-center">
+            <span class="text-warm-dark text-lg">Фото</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: How it works -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Как работает пиявка
+      </h2>
+      <p class="text-text-secondary text-center max-w-2xl mx-auto mt-4">
+        Гирудотерапия — не народная медицина, а научно обоснованный метод с 30-летней историей исследований
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8 mt-12">
+        {howItWorks.map((item) => (
+          <div class="bg-warm-light rounded-2xl p-8 text-center">
+            <div class="text-4xl font-bold text-primary mb-4">{item.icon}</div>
+            <h3 class="font-heading text-xl font-bold text-deep">{item.title}</h3>
+            <p class="text-text-secondary text-sm mt-3">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Indications -->
+  <section class="bg-warm-light">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Показания к гирудотерапии
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        {indications.map((item) => (
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="font-semibold text-deep">{item.title}</h3>
+            <p class="text-text-secondary text-sm mt-2">{item.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 bg-primary/5 rounded-2xl p-6 max-w-3xl mx-auto">
+        <h3 class="font-heading text-lg font-bold text-deep text-center">Противопоказания</h3>
+        <p class="text-text-secondary text-sm mt-2 text-center">
+          Гемофилия, тяжёлая анемия, беременность, онкология в активной стадии, индивидуальная непереносимость. Перед курсом — обязательная консультация.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Stories -->
+  <section class="bg-white">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Истории из практики
+      </h2>
+
+      <div class="space-y-6 mt-12">
+        {stories.map((story) => (
+          <div class="bg-warm-light rounded-2xl p-6">
+            <h3 class="font-semibold text-deep">{story.title}</h3>
+            <p class="text-text-secondary mt-2">{story.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-text-light text-sm text-center mt-8">
+        Результаты индивидуальны и зависят от особенностей организма
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 5: Education -->
+  <section class="bg-warm-light">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Образование и школа
+      </h2>
+
+      <div class="bg-white rounded-2xl shadow-md p-8 mt-8 max-w-2xl mx-auto">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-heading text-xl font-bold text-deep">
+              Сеченовский университет
+            </h3>
+            <p class="text-text-secondary mt-2">
+              Профессиональная переподготовка по гирудотерапии. Обучение у ведущих специалистов России.
+            </p>
+          </div>
+        </div>
+
+        <div class="border-t border-warm-dark/30 mt-6 pt-6">
+          <h4 class="font-semibold text-deep">Научный руководитель</h4>
+          <p class="text-text-secondary mt-1">
+            <span class="font-semibold">Наприенко Маргарита Валентиновна</span> — доктор медицинских наук, профессор кафедры нелекарственных методов лечения и клинической физиологии Сеченовского университета. Ведущий специалист России по гирудотерапии.
+          </p>
+        </div>
+
+        <blockquote class="border-l-4 border-primary pl-4 mt-6">
+          <p class="text-text-secondary italic">
+            «Гирудотерапия — это не альтернатива медицине, а её дополнение. Я использую пиявок там, где они действительно нужны, в комплексе с основным лечением.»
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: CTA -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 text-center">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-white">
+        Запишитесь на консультацию по гирудотерапии
+      </h2>
+      <p class="text-white/80 mt-4">
+        На первом приёме определим, подходит ли вам этот метод, и составим план лечения.
+      </p>
+      <p class="text-white/60 text-sm mt-2">
+        Южно-Сахалинск · Индивидуальный приём
+      </p>
+      <a
+        href="/kontakty"
+        class="inline-block bg-white text-primary rounded-xl px-10 py-4 font-semibold hover:bg-warm-light transition mt-8"
+      >
+        Записаться
+      </a>
+    </div>
+  </section>
+</BaseLayout>
