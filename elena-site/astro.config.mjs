@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://elenachikrizova.vercel.app',
+  site: 'https://elenachekrizova.ru',
   integrations: [mdx(), sitemap()],
   vite: { plugins: [tailwindcss()] }
 });

@@ -4,11 +4,18 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
 }
 
-const { title, description = 'Врач-эндокринолог Елена Чекризова — 30 лет опыта. Эндокринология, гирудотерапия, нутрициология. Южно-Сахалинск.' } = Astro.props;
+const {
+  title,
+  description = 'Врач-эндокринолог Елена Чекризова — 30 лет опыта. Эндокринология, гирудотерапия, нутрициология. Южно-Сахалинск.'
+} = Astro.props;
+
+const defaultTitle = 'Елена Чекризова — врач-эндокринолог, Южно-Сахалинск';
+const pageTitle = title ? `${title} | Елена Чекризова` : defaultTitle;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -17,11 +24,29 @@ const { title, description = 'Врач-эндокринолог Елена Че�
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="Елена Чекризова" />
+    <meta property="og:url" content={canonicalURL} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
+    <slot name="head" />
   </head>
   <body class="bg-bg text-deep font-body">
     <Header />

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SeoSchema from '../components/SeoSchema.astro';
 import Hero from '../components/sections/Hero.astro';
 import Specializations from '../components/sections/Specializations.astro';
 import Approach from '../components/sections/Approach.astro';
@@ -8,12 +9,24 @@ import Cases from '../components/sections/Cases.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
 import MarathonTeaser from '../components/sections/MarathonTeaser.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
+
+const schemaData = {
+  name: 'Елена Чекризова — врач-эндокринолог',
+  description: 'Врач-эндокринолог высшей категории, гирудотерапевт, нутрициолог. 30 лет практики. Системный подход к здоровью.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Южно-Сахалинск',
+    addressCountry: 'RU',
+  },
+  priceRange: 'от 2700 ₽',
+};
 ---
 
 <BaseLayout
   title="Елена Чекризова — врач-эндокринолог, Южно-Сахалинск"
   description="Врач-эндокринолог с 30-летним стажем. Эндокринология, гирудотерапия, нутрициология. Системный подход к здоровью."
 >
+  <SeoSchema type="MedicalBusiness" data={schemaData} slot="head" />
   <Hero />
   <Specializations />
   <Approach />

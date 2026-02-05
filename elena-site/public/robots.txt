@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap: https://elenachekrizova.ru/sitemap-index.xml
+
+Disallow: /privacy
+Disallow: /terms
+Disallow: /disclaimer

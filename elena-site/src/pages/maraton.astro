@@ -1,5 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SeoSchema from '../components/SeoSchema.astro';
+
+const schemaData = {
+  name: 'Марафон «Энергия стройности»',
+  description: '7-дневный марафон снижения веса под контролем врача-эндокринолога',
+  offers: {
+    '@type': 'Offer',
+    price: '5000',
+    priceCurrency: 'RUB',
+  },
+};
 
 const painPoints = [
   'Устала постоянно, нет сил ни на что',
@@ -76,6 +87,7 @@ const included = [
   title="Марафон «Энергия стройности» — Елена Чекризова"
   description="7-дневный марафон снижения веса под контролем врача-эндокринолога. 66 участников — 66 результатов. Системный подход: питание, вода, движение, режим. 5 000 ₽."
 >
+  <SeoSchema type="Product" data={schemaData} slot="head" />
   <!-- Section 1: Hero -->
   <section class="bg-gradient-to-br from-deep via-deep/95 to-primary/20">
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">

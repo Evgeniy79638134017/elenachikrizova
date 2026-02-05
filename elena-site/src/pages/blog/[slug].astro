@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SeoSchema from '../../components/SeoSchema.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -27,12 +28,24 @@ const formatDate = (date: Date) => {
     year: 'numeric',
   });
 };
+
+const schemaData = {
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Елена Чекризова',
+    jobTitle: 'Врач-эндокринолог',
+  },
+};
 ---
 
 <BaseLayout
   title={`${post.data.title} — Елена Чекризова`}
   description={post.data.description}
 >
+  <SeoSchema type="Article" data={schemaData} slot="head" />
   <article class="bg-white">
     <div class="max-w-3xl mx-auto px-4 md:px-6 py-16 md:py-24">
       <!-- Back link -->
