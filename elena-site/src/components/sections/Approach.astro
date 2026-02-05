@@ -1,0 +1,52 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Глубокая диагностика',
+    description: 'Анализирую историю за 10+ лет. Смотрю анализы, исследования, сравниваю динамику. Нахожу корневую причину, а не симптомы.',
+  },
+  {
+    number: '02',
+    title: 'Индивидуальный план',
+    description: 'Подбираю комбинацию методов под вашу ситуацию: медикаменты, нутрицевтики, гирудотерапия, питание. Каждый метод усиливает остальные.',
+  },
+  {
+    number: '03',
+    title: 'Сопровождение и поддержка',
+    description: 'Остаюсь на связи после приёма. Корректирую план по результатам. Пациенты пишут, звонят — всегда отвечаю.',
+  },
+];
+---
+
+<section class="bg-warm-light">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
+    <div class="text-center">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep">
+        Почему системный подход работает
+      </h2>
+      <p class="text-text-secondary text-lg mt-4 max-w-2xl mx-auto">
+        Классическая медицина + нутрициология + гирудотерапия = результат в 2 раза быстрее
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 mt-12">
+      {steps.map((step) => (
+        <div>
+          <span class="text-primary text-5xl font-bold opacity-30">{step.number}</span>
+          <h3 class="font-heading text-xl font-semibold text-deep mt-4">
+            {step.title}
+          </h3>
+          <p class="text-text-secondary mt-3">
+            {step.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <blockquote class="border-l-4 border-primary pl-6 mt-12 max-w-3xl mx-auto">
+      <p class="italic text-deep text-lg">
+        «Я рассказываю путь наименьшей затраты энергии и как быстро выйти из состояния. За это меня выбирают пациенты.»
+      </p>
+    </blockquote>
+  </div>
+</section>
