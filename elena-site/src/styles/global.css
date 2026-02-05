@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @theme {
   --color-primary: #6BA5A5;
   --color-primary-light: #8FBFBF;
