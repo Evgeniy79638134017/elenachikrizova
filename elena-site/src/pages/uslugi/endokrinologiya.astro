@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const conditions = [
+  'Щитовидная железа',
+  'Сахарный диабет',
+  'Ожирение',
+  'Метаболический синдром',
+  'Дефицит витамина D',
+  'Железодефицитная анемия',
+  'Гипотиреоз',
+  'Диффузно-токсический зоб',
+  'Надпочечниковая недостаточность',
+  'Дефицитные состояния',
+];
+
+const signals = [
+  'Постоянная усталость — высыпаетесь, но к обеду уже без сил',
+  'Не можете похудеть — диеты не работают, вес стоит или растёт',
+  'Выпадают волосы — стали тонкими и ломкими в последние месяцы',
+  'Заедаете стресс — или наоборот, не можете заставить себя поесть',
+  'Постоянно мёрзнете — или наоборот, бросает в жар',
+  'Перепады настроения — раздражительность, тревожность, апатия',
+  'Сахар выше нормы — даже если «всего чуть-чуть» повышен',
+];
+
+const steps = [
+  {
+    number: '1',
+    title: 'Анализ истории',
+    description: 'Смотрю анализы и обследования за последние 10 лет в системе. Сравниваю динамику, ищу закономерности.',
+  },
+  {
+    number: '2',
+    title: 'Диагностика',
+    description: 'Если нужно — назначаю дообследование. УЗИ, гормоны, ферритин, витамин D. Не лишнее, а только необходимое.',
+  },
+  {
+    number: '3',
+    title: 'Системный план',
+    description: 'Составляю индивидуальный план: медикаменты, нутрицевтики, питание, режим. Остаюсь на связи для корректировок.',
+  },
+];
+---
+
+<BaseLayout
+  title="Эндокринология — Елена Чекризова"
+  description="Врач-эндокринолог с 30-летним стажем. Щитовидная железа, диабет, ожирение, дефициты. Приём 2 700 ₽, Южно-Сахалинск."
+>
+  <!-- Section 1: Mini Hero -->
+  <section class="bg-gradient-to-b from-bg to-warm-light">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+            30 лет практики
+          </span>
+          <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep mt-4">
+            Эндокринология
+          </h1>
+          <p class="text-text-secondary text-lg mt-4">
+            Нахожу причину, а не маскирую симптомы. Разбираюсь в сложных и редких случаях — от гипотиреоза до инсулиномы.
+          </p>
+          <a
+            href="/kontakty"
+            class="inline-block bg-primary text-white rounded-xl px-8 py-3.5 font-semibold hover:bg-primary-dark transition mt-6"
+          >
+            Записаться на приём
+          </a>
+        </div>
+        <div class="flex justify-center lg:justify-end">
+          <div class="bg-warm-light rounded-3xl aspect-square w-full max-w-sm shadow-xl flex items-center justify-center">
+            <span class="text-warm-dark text-lg">Фото</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Conditions -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        С чем обращаются к эндокринологу
+      </h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-12">
+        {conditions.map((item) => (
+          <div class="bg-warm-light rounded-xl p-4 text-center">
+            <span class="font-semibold text-deep text-sm">{item}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-8 bg-primary/5 rounded-2xl p-6">
+        <h3 class="font-heading text-lg font-bold text-deep">Редкие диагнозы</h3>
+        <p class="text-text-secondary text-sm mt-2">
+          За 30 лет практики диагностировала: несахарный диабет (2 случая), феохромоцитому (3 случая за 20 лет), инсулиному, надпочечниковую недостаточность — даже в условиях ограниченных ресурсов.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Signals -->
+  <section class="bg-warm-light">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        7 сигналов, что пора к эндокринологу
+      </h2>
+
+      <div class="space-y-4 mt-12">
+        {signals.map((item, index) => (
+          <div class="flex items-start gap-4 bg-white rounded-xl p-5 shadow-sm">
+            <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+              {index + 1}
+            </span>
+            <span class="text-deep">{item}</span>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-primary font-semibold text-center mt-8">
+        Если нашли у себя 2+ признака — это повод проверить гормоны и дефициты
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 4: How it works -->
+  <section class="bg-white">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Как проходит приём
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8 mt-12">
+        {steps.map((step) => (
+          <div class="text-center">
+            <div class="bg-primary text-white w-12 h-12 rounded-full mx-auto flex items-center justify-center text-xl font-bold">
+              {step.number}
+            </div>
+            <h3 class="font-semibold text-deep mt-4">{step.title}</h3>
+            <p class="text-text-secondary text-sm mt-2">{step.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <blockquote class="border-l-4 border-primary pl-6 mt-12 max-w-2xl mx-auto">
+        <p class="italic text-text-secondary">
+          «У меня приём от 30 минут до часа. Каждому пациенту — индивидуальный подход. Пациенты звонят, пишут — всегда отвечаю.»
+        </p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Section 5: Mini Case -->
+  <section class="bg-warm-light">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Из практики
+      </h2>
+
+      <div class="bg-white rounded-2xl shadow-md p-8 mt-8 max-w-2xl mx-auto">
+        <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Кейс</span>
+        <h3 class="font-heading text-xl font-bold text-deep mt-3">
+          Диагностика аппендицита эндокринологом
+        </h3>
+        <p class="text-text-secondary mt-3">
+          Пациент пришёл на приём к эндокринологу, а я диагностировала аппендицит. Вызвала скорую — через час он был на операционном столе. Врачи удивились, что эндокринолог поставил такой диагноз. 30 лет опыта позволяют видеть шире своей специальности.
+        </p>
+        <p class="text-text-light text-xs mt-4">Результаты индивидуальны</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: CTA -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 text-center">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-white">
+        Запишитесь на приём к эндокринологу
+      </h2>
+      <p class="text-white/80 mt-4">
+        Стоимость консультации — 2 700 ₽. Длительность — от 30 до 60 минут.
+      </p>
+      <p class="text-white/60 text-sm mt-2">
+        Южно-Сахалинск · Медскан · Клинклиник
+      </p>
+      <a
+        href="/kontakty"
+        class="inline-block bg-white text-primary rounded-xl px-10 py-4 font-semibold hover:bg-warm-light transition mt-8"
+      >
+        Записаться
+      </a>
+    </div>
+  </section>
+</BaseLayout>
