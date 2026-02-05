@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const timeline = [
+  { year: '1990-е', description: 'Начало врачебной карьеры. Терапия, эндокринология' },
+  { year: '2000-е', description: 'Высшая квалификационная категория. Работа в стационарах и поликлиниках' },
+  { year: '2010-е', description: 'Обучение гирудотерапии в Сеченовском университете. Наставник — Наприенко М.В., завкафедрой гирудотерапии' },
+  { year: '2020-е', description: 'Партнёрство с AgenYZ. Нутрициология и клеточное питание. Запуск марафона «Энергия стройности»' },
+  { year: 'Сейчас', description: 'Клиники Медскан и Клинклиник. 3 место в рейтинге ПроДокторов. Выход в онлайн' },
+];
+
+const principles = [
+  {
+    title: 'Системность',
+    description: 'Классическая медицина + нутрициология + гирудотерапия. Каждый метод усиливает остальные',
+  },
+  {
+    title: 'Честность',
+    description: 'Объясняю всё от и до. Говорю как есть, даже если это неприятно. Пациенты ценят открытость',
+  },
+  {
+    title: 'Результат',
+    description: 'Не маскирую симптомы — ищу корневую причину. Смотрю историю за 10+ лет, сравниваю динамику',
+  },
+];
+
+const personal = [
+  {
+    title: 'Кундалини-йога',
+    description: 'Прошла 40-дневную трансформацию. Верю, что 40 дней формируют привычку — это работает и для здоровья',
+  },
+  {
+    title: 'Ранний подъём',
+    description: 'Встаю в 5:00 утра. Это даёт продуктивность и энергию на весь день. Советую попробовать каждому',
+  },
+];
+---
+
+<BaseLayout
+  title="Обо мне — Елена Чекризова"
+  description="Врач-эндокринолог с 30-летним стажем. История, образование, философия системного подхода к здоровью."
+>
+  <!-- Section 1: Mini Hero -->
+  <section class="bg-gradient-to-b from-bg to-warm-light">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-primary font-semibold text-sm uppercase tracking-wide">Обо мне</p>
+          <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep mt-2">
+            Елена Чекризова
+          </h1>
+          <p class="text-text-secondary text-lg mt-4">
+            Врач-эндокринолог, гирудотерапевт, нутрициолог
+          </p>
+          <p class="text-text-light text-sm mt-2">
+            Высшая квалификационная категория · Южно-Сахалинск
+          </p>
+        </div>
+        <div class="flex justify-center lg:justify-end">
+          <div class="bg-warm-light rounded-3xl aspect-[3/4] w-full max-w-sm shadow-xl flex items-center justify-center">
+            <span class="text-warm-dark text-lg">Фото Елены</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Calling -->
+  <section class="bg-white">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Призвание с детства
+      </h2>
+      <article class="mt-12 space-y-6 text-text-secondary text-lg leading-relaxed">
+        <p>
+          Когда мне было 6 лет, брат подавился карамелькой. Он задыхался, никого не было дома.
+          Я догадалась перевернуть его и постучать по спине — и спасла ему жизнь.
+          С того момента я знала, что буду врачом.
+        </p>
+        <p>
+          Всю жизнь я лечила кошек, собак. Подранных кошек зашивала обычными иголками.
+          Помогала даже ежам — доставала пинцетом до тридцати клещей с одного ежа.
+          Всё началось с помощи живым существам.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Section 3: Timeline -->
+  <section class="bg-warm-light">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        30 лет в медицине
+      </h2>
+      <div class="mt-12 relative">
+        <div class="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-primary/30"></div>
+        <div class="space-y-8">
+          {timeline.map((item, index) => (
+            <div class={`relative flex items-start gap-6 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+              <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full"></div>
+              <div class={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
+                <p class="text-primary font-bold">{item.year}</p>
+                <p class="text-text-secondary mt-1">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Philosophy -->
+  <section class="bg-white">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        Мой подход
+      </h2>
+      <blockquote class="mt-12 text-center">
+        <p class="font-heading text-2xl md:text-3xl text-deep italic max-w-3xl mx-auto">
+          «Путь наименьшей затраты энергии и как быстро выйти из состояния — вот что я ищу для каждого пациента»
+        </p>
+      </blockquote>
+      <div class="grid md:grid-cols-3 gap-8 mt-12">
+        {principles.map((item) => (
+          <div class="text-center">
+            <h3 class="font-heading text-xl font-semibold text-deep">{item.title}</h3>
+            <p class="text-text-secondary mt-3">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Personal -->
+  <section class="bg-warm-light">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+        За пределами клиники
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8 mt-8">
+        {personal.map((item) => (
+          <div class="bg-white rounded-2xl p-6 shadow-md">
+            <h3 class="font-heading text-lg font-semibold text-deep">{item.title}</h3>
+            <p class="text-text-secondary mt-2">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: CTA -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 text-center">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-white">
+        Готовы начать путь к здоровью?
+      </h2>
+      <p class="text-white/80 mt-4">
+        Запишитесь на приём — первый шаг к системному восстановлению
+      </p>
+      <a
+        href="/kontakty"
+        class="inline-block bg-white text-primary rounded-xl px-10 py-4 font-semibold hover:bg-warm-light transition mt-8"
+      >
+        Записаться на приём
+      </a>
+    </div>
+  </section>
+</BaseLayout>
