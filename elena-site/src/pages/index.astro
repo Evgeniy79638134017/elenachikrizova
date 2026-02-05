@@ -1,22 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Specializations from '../components/sections/Specializations.astro';
 ---
 
-<BaseLayout title="Елена Чекризова — Врач-эндокринолог · 30 лет опыта">
-  <section class="min-h-screen flex items-center justify-center">
-    <div class="text-center px-4">
-      <h1 class="font-heading text-4xl md:text-5xl text-deep font-bold mb-4">
-        Елена Чекризова
-      </h1>
-      <p class="text-xl text-text-secondary mb-8">
-        Врач-эндокринолог · 30 лет опыта
-      </p>
-      <a
-        href="/kontakty"
-        class="inline-block bg-primary text-white rounded-xl px-8 py-3.5 font-semibold hover:bg-primary-dark transition"
-      >
-        Записаться на приём
-      </a>
-    </div>
-  </section>
+<BaseLayout
+  title="Елена Чекризова — врач-эндокринолог, Южно-Сахалинск"
+  description="Врач-эндокринолог с 30-летним стажем. Эндокринология, гирудотерапия, нутрициология. Системный подход к здоровью."
+>
+  <Hero />
+  <Specializations />
 </BaseLayout>
