@@ -22,18 +22,22 @@ const stats = [
 const products = [
   {
     title: 'Детокс-программа',
+    slug: 'detoks-programma',
     description: 'Первый этап: очищение организма от токсинов и подготовка к усвоению нутриентов',
   },
   {
     title: 'Витаминно-минеральные комплексы',
+    slug: 'vitaminy-i-mineraly',
     description: 'Восполнение дефицитов на основе результатов чекапа. Индивидуальный подбор',
   },
   {
     title: 'Согенетик',
+    slug: 'sogenetik',
     description: 'Клеточное питание нового поколения. Поддержка на уровне ДНК',
   },
   {
     title: 'Комплексные программы',
+    slug: 'kompleksnye-programmy',
     description: 'От детокса до полного восстановления. Каждая программа под контролем врача',
   },
 ];
@@ -124,10 +128,20 @@ const integrationBlocks = [
 
       <div class="grid md:grid-cols-2 gap-6 mt-12">
         {products.map((product) => (
-          <div class="bg-white rounded-2xl shadow-md p-6">
-            <h3 class="font-semibold text-deep text-lg">{product.title}</h3>
-            <p class="text-text-secondary text-base mt-2">{product.description}</p>
-          </div>
+          <a
+            href={`/uslugi/nutriciologiya/${product.slug}`}
+            class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group block"
+          >
+            <h3 class="font-semibold text-deep text-lg group-hover:text-primary transition">
+              {product.title}
+            </h3>
+            <p class="text-text-secondary text-base mt-2">
+              {product.description}
+            </p>
+            <span class="text-primary text-sm font-medium mt-4 inline-block opacity-0 group-hover:opacity-100 transition">
+              Подробнее →
+            </span>
+          </a>
         ))}
       </div>
 
