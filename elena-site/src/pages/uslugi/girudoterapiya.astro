@@ -20,42 +20,15 @@ const howItWorks = [
 ];
 
 const indications = [
-  {
-    title: 'Гинекология',
-    description: 'Миома, эндометриоз, хронические воспаления, бесплодие, нарушения цикла.',
-  },
-  {
-    title: 'Варикоз',
-    description: 'Варикозная болезнь, тяжесть в ногах, отёки, профилактика тромбозов.',
-  },
-  {
-    title: 'Суставы',
-    description: 'Артрозы, артриты, остеохондроз, боли в спине, грыжи позвоночника.',
-  },
-  {
-    title: 'Сердце и сосуды',
-    description: 'Гипертония, ИБС, атеросклероз, профилактика инсультов и инфарктов.',
-  },
-  {
-    title: 'Головные боли',
-    description: 'Мигрени, головные боли напряжения, вегето-сосудистая дистония.',
-  },
-  {
-    title: 'Кожа',
-    description: 'Фурункулёз, псориаз, трофические язвы, рубцы, постакне.',
-  },
-  {
-    title: 'Эндокринология',
-    description: 'Узлы щитовидной железы, мастопатия, метаболический синдром.',
-  },
-  {
-    title: 'Урология',
-    description: 'Простатит, аденома простаты, хронические воспаления.',
-  },
-  {
-    title: 'Реабилитация',
-    description: 'После операций, травм, инсультов. Ускоряет восстановление.',
-  },
+  { title: 'Гинекология', slug: 'ginekologiya', description: 'Миома, эндометриоз, хронические воспаления, спаечный процесс, бесплодие' },
+  { title: 'Варикоз', slug: 'varikoz', description: 'Варикозная болезнь, тяжесть в ногах, сосудистые звёздочки, трофические язвы' },
+  { title: 'Суставы', slug: 'sustavy', description: 'Артрозы, артриты, остеохондроз, грыжи позвоночника' },
+  { title: 'Сердце и сосуды', slug: 'serdce-i-sosudy', description: 'Гипертония, ИБС, атеросклероз, профилактика инсульта' },
+  { title: 'Головные боли', slug: 'golovnye-boli', description: 'Мигрени, головные боли напряжения, шейный остеохондроз' },
+  { title: 'Кожа', slug: 'kozha', description: 'Псориаз, экзема, фурункулёз, трофические язвы' },
+  { title: 'Эндокринология', slug: 'endokrinologiya-girudoterapiya', description: 'Узлы щитовидной железы, мастопатия, кисты' },
+  { title: 'Урология', slug: 'urologiya', description: 'Простатит, аденома простаты, мужское бесплодие' },
+  { title: 'Реабилитация', slug: 'reabilitaciya', description: 'После операций, травм, инсультов' },
 ];
 
 const stories = [
@@ -139,10 +112,20 @@ const stories = [
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         {indications.map((item) => (
-          <div class="bg-white rounded-xl p-6 shadow-sm">
-            <h3 class="font-semibold text-deep text-lg">{item.title}</h3>
-            <p class="text-text-secondary text-base mt-2">{item.description}</p>
-          </div>
+          <a
+            href={`/uslugi/girudoterapiya/${item.slug}`}
+            class="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group block"
+          >
+            <h3 class="font-semibold text-deep text-lg group-hover:text-primary transition">
+              {item.title}
+            </h3>
+            <p class="text-text-secondary text-base mt-2">
+              {item.description}
+            </p>
+            <span class="text-primary text-sm font-medium mt-4 inline-block opacity-0 group-hover:opacity-100 transition">
+              Подробнее →
+            </span>
+          </a>
         ))}
       </div>
 
