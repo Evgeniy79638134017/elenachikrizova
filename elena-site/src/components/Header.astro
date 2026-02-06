@@ -2,10 +2,16 @@
 const navLinks = [
   { href: '/', label: 'Главная' },
   { href: '/about', label: 'Обо мне' },
-  { href: '/uslugi/endokrinologiya', label: 'Услуги' },
   { href: '/kejsy', label: 'Кейсы' },
   { href: '/blog', label: 'Блог' },
   { href: '/kontakty', label: 'Контакты' },
+];
+
+const serviceLinks = [
+  { href: '/uslugi', label: 'Все услуги' },
+  { href: '/uslugi/endokrinologiya', label: 'Эндокринология' },
+  { href: '/uslugi/girudoterapiya', label: 'Гирудотерапия' },
+  { href: '/uslugi/nutriciologiya', label: 'Нутрициология' },
 ];
 
 const mobileNavLinks = [
@@ -29,12 +35,41 @@ const mobileNavLinks = [
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex gap-8">
-      {navLinks.map((link) => (
+    <nav class="hidden lg:flex items-center gap-8">
+      {navLinks.slice(0, 2).map((link) => (
+        <a href={link.href} class="text-deep text-base md:text-lg hover:text-primary transition">
+          {link.label}
+        </a>
+      ))}
+
+      <!-- Dropdown Услуги -->
+      <div class="relative group">
         <a
-          href={link.href}
-          class="text-base md:text-lg text-text-secondary hover:text-primary transition"
+          href="/uslugi"
+          class="text-deep text-base md:text-lg hover:text-primary transition flex items-center gap-1"
         >
+          Услуги
+          <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </a>
+
+        <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div class="bg-white rounded-xl shadow-xl border border-warm-dark/10 py-2 min-w-48">
+            {serviceLinks.map((link) => (
+              <a
+                href={link.href}
+                class="block px-5 py-2.5 text-deep hover:bg-warm-light hover:text-primary transition"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {navLinks.slice(2).map((link) => (
+        <a href={link.href} class="text-deep text-base md:text-lg hover:text-primary transition">
           {link.label}
         </a>
       ))}
@@ -43,7 +78,7 @@ const mobileNavLinks = [
     <!-- Desktop CTA -->
     <a
       href="/kontakty"
-      class="hidden md:block bg-primary text-white rounded-xl px-8 py-3 text-base md:text-lg font-semibold hover:bg-primary-dark transition"
+      class="hidden lg:block bg-primary text-white rounded-xl px-8 py-3 text-base md:text-lg font-semibold hover:bg-primary-dark transition"
     >
       Записаться
     </a>
@@ -51,7 +86,7 @@ const mobileNavLinks = [
     <!-- Mobile Burger Button -->
     <button
       id="burger-btn"
-      class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+      class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
       aria-label="Открыть меню"
     >
       <span class="w-8 h-1 bg-deep transition-all"></span>
