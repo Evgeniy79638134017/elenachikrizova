@@ -30,10 +30,10 @@ const specializations = [
 <section id="specializations" class="bg-white">
   <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
     <div class="text-center">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep">
         Три направления — один системный подход
       </h2>
-      <p class="text-text-secondary text-lg mt-4 max-w-2xl mx-auto">
+      <p class="text-text-secondary text-xl mt-4 max-w-2xl mx-auto">
         Каждое направление усиливает эффект остальных
       </p>
     </div>
@@ -42,15 +42,15 @@ const specializations = [
       {specializations.map((spec) => (
         <div class="animate-on-scroll bg-white rounded-2xl shadow-md p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
           <div set:html={spec.icon} />
-          <h3 class="font-heading text-xl font-semibold text-deep mt-6">
+          <h3 class="font-heading text-2xl font-semibold text-deep mt-6">
             {spec.title}
           </h3>
-          <p class="text-text-secondary mt-3">
+          <p class="text-text-secondary text-lg mt-3">
             {spec.description}
           </p>
           <a
             href={spec.href}
-            class="inline-block text-primary font-semibold mt-4 hover:text-primary-dark transition"
+            class="inline-block text-primary text-lg font-semibold mt-4 hover:text-primary-dark transition"
           >
             Подробнее →
           </a>

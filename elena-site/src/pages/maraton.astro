@@ -93,18 +93,18 @@ const included = [
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <span class="bg-white/10 text-white text-xs font-semibold px-3 py-1 rounded-full">
+          <span class="bg-white/10 text-white text-sm font-semibold px-3 py-1 rounded-full">
             Врачебный марафон · 7 дней
           </span>
-          <h1 class="font-heading text-4xl md:text-5xl font-bold text-white mt-4">
+          <h1 class="font-heading text-5xl md:text-6xl font-bold text-white mt-4">
             Энергия стройности
           </h1>
-          <p class="text-white/80 text-lg mt-4">
+          <p class="text-white/80 text-xl mt-4">
             7 дней, которые меняют привычки. Не диета — системный подход к снижению веса под контролем врача-эндокринолога с 30-летним стажем.
           </p>
           <div class="flex gap-8 mt-8 items-baseline">
             <span class="text-white font-heading text-4xl font-bold">66</span>
-            <span class="text-white/70 text-sm">участников — 66 результатов</span>
+            <span class="text-white/70 text-base">участников — 66 результатов</span>
           </div>
           <a
             href="#price"
@@ -125,17 +125,17 @@ const included = [
   <!-- Section 2: For whom -->
   <section class="bg-white">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         Для кого этот марафон
       </h2>
-      <p class="text-text-secondary text-center mt-3">
+      <p class="text-text-secondary text-xl text-center mt-3">
         Если вы узнаёте себя хотя бы в двух пунктах — марафон для вас
       </p>
 
       <div class="grid md:grid-cols-2 gap-6 mt-12">
         {painPoints.map((pain) => (
           <div class="bg-warm-light rounded-xl p-6">
-            <p class="text-text-secondary italic">«{pain}»</p>
+            <p class="text-text-secondary italic text-lg">«{pain}»</p>
           </div>
         ))}
       </div>
@@ -145,7 +145,7 @@ const included = [
   <!-- Section 3: Program -->
   <section class="bg-warm-light">
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         Программа 7 дней
       </h2>
 
@@ -153,8 +153,8 @@ const included = [
         {programDays.map((item) => (
           <div class="bg-white rounded-2xl shadow-md p-6">
             <span class="text-primary font-heading text-2xl font-bold">{item.day}</span>
-            <h3 class="font-semibold text-deep mt-2">{item.title}</h3>
-            <p class="text-text-secondary text-sm mt-2">{item.description}</p>
+            <h3 class="font-semibold text-deep text-lg mt-2">{item.title}</h3>
+            <p class="text-text-secondary text-base mt-2">{item.description}</p>
           </div>
         ))}
       </div>
@@ -164,22 +164,22 @@ const included = [
   <!-- Section 4: Why different -->
   <section class="bg-white">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         Почему это не просто диета
       </h2>
 
       <blockquote class="max-w-2xl mx-auto mt-8 border-l-4 border-primary pl-6">
-        <p class="text-text-secondary text-lg italic">
+        <p class="text-text-secondary text-xl italic">
           «Просто похудеть можно. Но когда ты всё-таки чекап провёл, доктор посмотрел — это уже другой подход. Это не просто рекомендация, а именно врачебный подход, где человек отвечает за тебя.»
         </p>
-        <footer class="text-deep font-semibold mt-4">Елена Чекризова</footer>
+        <footer class="text-deep font-semibold text-lg mt-4">Елена Чекризова</footer>
       </blockquote>
 
       <div class="grid md:grid-cols-3 gap-8 mt-12">
         {differences.map((item) => (
           <div class="text-center">
-            <h3 class="font-semibold text-deep">{item.title}</h3>
-            <p class="text-text-secondary text-sm mt-2">{item.description}</p>
+            <h3 class="font-semibold text-deep text-lg">{item.title}</h3>
+            <p class="text-text-secondary text-base mt-2">{item.description}</p>
           </div>
         ))}
       </div>
@@ -189,37 +189,37 @@ const included = [
   <!-- Section 5: Results -->
   <section class="bg-warm-light">
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         Результаты участников
       </h2>
 
       <div class="bg-white rounded-2xl shadow-md p-8 max-w-3xl mx-auto mt-12">
-        <h3 class="font-heading text-2xl font-bold text-deep text-center">
+        <h3 class="font-heading text-3xl font-bold text-deep text-center">
           66 участников — 66 результатов
         </h3>
 
         <div class="border-t border-warm-dark/20 my-6"></div>
 
-        <p class="text-text-secondary italic">
+        <p class="text-text-secondary italic text-lg">
           «Одна участница потеряла 10 кг за 7 дней. Что она начала делать? Начала пить воду — раньше пила всего три стакана в сутки. Обратила внимание на режим дня, добавила физические нагрузки.»
         </p>
-        <p class="text-text-light text-sm mt-2">Исходный вес — 130 кг</p>
+        <p class="text-text-light text-base mt-2">Исходный вес — 130 кг</p>
 
         <div class="border-t border-warm-dark/20 my-6"></div>
 
-        <p class="text-text-secondary">
+        <p class="text-text-secondary text-lg">
           Все участники систематизировали свои дни, получили другое качество питания и остались довольны.
         </p>
       </div>
 
       <div class="max-w-2xl mx-auto mt-8 text-center">
-        <p class="text-primary font-heading text-xl italic">
+        <p class="text-primary font-heading text-2xl italic">
           «Мы хотим продолжение! Как это сделать?»
         </p>
-        <p class="text-text-light text-sm mt-2">— участники марафона</p>
+        <p class="text-text-light text-base mt-2">— участники марафона</p>
       </div>
 
-      <p class="text-text-light text-xs text-center mt-8">
+      <p class="text-text-light text-sm text-center mt-8">
         Результаты индивидуальны и зависят от особенностей организма
       </p>
     </div>
@@ -228,21 +228,21 @@ const included = [
   <!-- Section 6: Price & CTA -->
   <section id="price" class="bg-gradient-to-r from-primary to-primary-dark">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28 text-center">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-white">
         Присоединяйтесь к марафону
       </h2>
-      <p class="text-white/80 text-lg mt-4">
+      <p class="text-white/80 text-xl mt-4">
         7 дней под контролем врача-эндокринолога
       </p>
 
       <div class="mt-8">
         <span class="text-white font-heading text-5xl font-bold">5 000 ₽</span>
-        <p class="text-white/60 text-sm mt-1">за полный курс</p>
+        <p class="text-white/60 text-base mt-1">за полный курс</p>
       </div>
 
       <div class="mt-6 text-left max-w-sm mx-auto">
         {included.map((item) => (
-          <div class="flex items-center gap-2 text-white/80 text-sm py-1">
+          <div class="flex items-center gap-2 text-white/80 text-base py-1">
             <span class="text-white">✓</span>
             <span>{item}</span>
           </div>
@@ -255,7 +255,7 @@ const included = [
       >
         Записаться на марафон
       </a>
-      <p class="text-white/50 text-sm mt-4">
+      <p class="text-white/50 text-base mt-4">
         Или напишите в Telegram для вопросов
       </p>
     </div>

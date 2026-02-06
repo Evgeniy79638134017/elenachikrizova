@@ -19,10 +19,10 @@ const categoryLabels: Record<string, string> = {
   <!-- Mini Hero -->
   <section class="bg-gradient-to-b from-bg to-warm-light">
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
-      <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep">
+      <h1 class="font-heading text-5xl md:text-6xl font-bold text-deep">
         Истории пациентов
       </h1>
-      <p class="text-text-secondary text-lg mt-4 max-w-2xl">
+      <p class="text-text-secondary text-xl mt-4 max-w-2xl">
         Реальные случаи из 30-летней практики. Каждая история — пример системного подхода.
       </p>
     </div>
@@ -34,19 +34,19 @@ const categoryLabels: Record<string, string> = {
       <div class="grid md:grid-cols-2 gap-8">
         {sortedCases.map((caseItem) => (
           <article class="bg-warm-light rounded-2xl p-8">
-            <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+            <span class="bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full">
               {categoryLabels[caseItem.data.category]}
             </span>
-            <h2 class="font-heading text-xl font-bold text-deep mt-3">
+            <h2 class="font-heading text-2xl font-bold text-deep mt-3">
               {caseItem.data.title}
             </h2>
-            <p class="text-text-secondary text-sm mt-2">
+            <p class="text-text-secondary text-lg mt-2">
               {caseItem.data.description}
             </p>
-            <p class="text-primary font-semibold text-sm mt-3">
+            <p class="text-primary font-semibold text-base mt-3">
               Результат: {caseItem.data.result}
             </p>
-            <p class="text-text-light text-xs mt-2">
+            <p class="text-text-light text-sm mt-2">
               {caseItem.data.disclaimer}
             </p>
           </article>
@@ -58,15 +58,15 @@ const categoryLabels: Record<string, string> = {
   <!-- CTA -->
   <section class="bg-warm-light">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 text-center">
-      <h2 class="font-heading text-2xl md:text-3xl font-bold text-deep">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep">
         Хотите похожий результат?
       </h2>
-      <p class="text-text-secondary mt-4">
+      <p class="text-text-secondary text-xl mt-4">
         Запишитесь на консультацию — разберёмся с вашей ситуацией
       </p>
       <a
         href="/kontakty"
-        class="inline-block bg-primary text-white rounded-xl px-8 py-3.5 font-semibold hover:bg-primary-dark transition mt-8"
+        class="inline-block bg-primary text-white rounded-xl px-10 py-4 text-lg font-semibold hover:bg-primary-dark transition mt-8"
       >
         Записаться на приём
       </a>

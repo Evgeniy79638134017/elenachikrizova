@@ -49,24 +49,24 @@ const schemaData = {
   <article class="bg-white">
     <div class="max-w-3xl mx-auto px-4 md:px-6 py-16 md:py-24">
       <!-- Back link -->
-      <a href="/blog" class="text-primary text-sm hover:underline">
+      <a href="/blog" class="text-primary text-base hover:underline">
         ← Назад в блог
       </a>
 
       <!-- Header -->
       <div class="mt-6">
         <div class="flex items-center gap-3">
-          <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+          <span class="bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full">
             {categoryLabels[post.data.category]}
           </span>
-          <time class="text-text-light text-sm">
+          <time class="text-text-light text-base">
             {formatDate(post.data.date)}
           </time>
         </div>
-        <h1 class="font-heading text-3xl md:text-4xl font-bold text-deep mt-4">
+        <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep mt-4">
           {post.data.title}
         </h1>
-        <p class="text-text-secondary text-lg mt-4">
+        <p class="text-text-secondary text-xl mt-4">
           {post.data.description}
         </p>
       </div>
@@ -81,15 +81,15 @@ const schemaData = {
 
       <!-- CTA -->
       <div class="border-t border-warm-dark/20 my-12 pt-12 text-center">
-        <h2 class="font-heading text-2xl font-bold text-deep">
+        <h2 class="font-heading text-3xl font-bold text-deep">
           Есть вопросы?
         </h2>
-        <p class="text-text-secondary mt-2">
+        <p class="text-text-secondary text-lg mt-2">
           Запишитесь на консультацию — разберёмся вместе
         </p>
         <a
           href="/kontakty"
-          class="inline-block bg-primary text-white rounded-xl px-8 py-3.5 font-semibold hover:bg-primary-dark transition mt-6"
+          class="inline-block bg-primary text-white rounded-xl px-10 py-4 text-lg font-semibold hover:bg-primary-dark transition mt-6"
         >
           Записаться на приём
         </a>
@@ -100,13 +100,14 @@ const schemaData = {
 
 <style is:global>
   .prose {
-    color: #5A6B7D;
+    color: #4A5568;
     line-height: 1.75;
+    font-size: 1.125rem;
   }
   .prose h2 {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     color: #1E3A5F;
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -114,7 +115,7 @@ const schemaData = {
   .prose h3 {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     color: #1E3A5F;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
@@ -137,7 +138,7 @@ const schemaData = {
     border-left: 4px solid #6BA5A5;
     padding-left: 1rem;
     font-style: italic;
-    color: #5A6B7D;
+    color: #4A5568;
     margin: 1.5rem 0;
   }
   .prose a {
@@ -148,7 +149,7 @@ const schemaData = {
     color: #4F8A8A;
   }
   .prose em {
-    color: #8A9BAD;
-    font-size: 0.875rem;
+    color: #718096;
+    font-size: 1rem;
   }
 </style>

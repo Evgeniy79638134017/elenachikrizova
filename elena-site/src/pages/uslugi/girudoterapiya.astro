@@ -83,18 +83,18 @@ const stories = [
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <span class="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+          <span class="bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full">
             15+ лет практики · Сеченовский университет
           </span>
-          <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep mt-4">
+          <h1 class="font-heading text-5xl md:text-6xl font-bold text-deep mt-4">
             Гирудотерапия
           </h1>
-          <p class="text-text-secondary text-lg mt-4">
+          <p class="text-text-secondary text-xl mt-4">
             Лечение медицинскими пиявками — метод с доказанной эффективностью. Использую при варикозе, гинекологических проблемах, болях в суставах и многом другом.
           </p>
           <a
             href="/kontakty"
-            class="inline-block bg-primary text-white rounded-xl px-8 py-3.5 font-semibold hover:bg-primary-dark transition mt-6"
+            class="inline-block bg-primary text-white rounded-xl px-10 py-4 text-lg font-semibold hover:bg-primary-dark transition mt-6"
           >
             Записаться на приём
           </a>
@@ -111,10 +111,10 @@ const stories = [
   <!-- Section 2: How it works -->
   <section class="bg-white">
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         Как работает пиявка
       </h2>
-      <p class="text-text-secondary text-center max-w-2xl mx-auto mt-4">
+      <p class="text-text-secondary text-xl text-center max-w-2xl mx-auto mt-4">
         Гирудотерапия — не народная медицина, а научно обоснованный метод с 30-летней историей исследований
       </p>
 
@@ -122,8 +122,8 @@ const stories = [
         {howItWorks.map((item) => (
           <div class="bg-warm-light rounded-2xl p-8 text-center">
             <div class="text-4xl font-bold text-primary mb-4">{item.icon}</div>
-            <h3 class="font-heading text-xl font-bold text-deep">{item.title}</h3>
-            <p class="text-text-secondary text-sm mt-3">{item.description}</p>
+            <h3 class="font-heading text-2xl font-bold text-deep">{item.title}</h3>
+            <p class="text-text-secondary text-base mt-3">{item.description}</p>
           </div>
         ))}
       </div>
@@ -133,22 +133,22 @@ const stories = [
   <!-- Section 3: Indications -->
   <section class="bg-warm-light">
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         Показания к гирудотерапии
       </h2>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         {indications.map((item) => (
           <div class="bg-white rounded-xl p-6 shadow-sm">
-            <h3 class="font-semibold text-deep">{item.title}</h3>
-            <p class="text-text-secondary text-sm mt-2">{item.description}</p>
+            <h3 class="font-semibold text-deep text-lg">{item.title}</h3>
+            <p class="text-text-secondary text-base mt-2">{item.description}</p>
           </div>
         ))}
       </div>
 
       <div class="mt-10 bg-primary/5 rounded-2xl p-6 max-w-3xl mx-auto">
-        <h3 class="font-heading text-lg font-bold text-deep text-center">Противопоказания</h3>
-        <p class="text-text-secondary text-sm mt-2 text-center">
+        <h3 class="font-heading text-xl font-bold text-deep text-center">Противопоказания</h3>
+        <p class="text-text-secondary text-base mt-2 text-center">
           Гемофилия, тяжёлая анемия, беременность, онкология в активной стадии, индивидуальная непереносимость. Перед курсом — обязательная консультация.
         </p>
       </div>
@@ -158,20 +158,20 @@ const stories = [
   <!-- Section 4: Stories -->
   <section class="bg-white">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         Истории из практики
       </h2>
 
       <div class="space-y-6 mt-12">
         {stories.map((story) => (
           <div class="bg-warm-light rounded-2xl p-6">
-            <h3 class="font-semibold text-deep">{story.title}</h3>
-            <p class="text-text-secondary mt-2">{story.description}</p>
+            <h3 class="font-semibold text-deep text-lg">{story.title}</h3>
+            <p class="text-text-secondary text-lg mt-2">{story.description}</p>
           </div>
         ))}
       </div>
 
-      <p class="text-text-light text-sm text-center mt-8">
+      <p class="text-text-light text-base text-center mt-8">
         Результаты индивидуальны и зависят от особенностей организма
       </p>
     </div>
@@ -180,7 +180,7 @@ const stories = [
   <!-- Section 5: Education -->
   <section class="bg-warm-light">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         Образование и школа
       </h2>
 
@@ -194,24 +194,24 @@ const stories = [
             </svg>
           </div>
           <div>
-            <h3 class="font-heading text-xl font-bold text-deep">
+            <h3 class="font-heading text-2xl font-bold text-deep">
               Сеченовский университет
             </h3>
-            <p class="text-text-secondary mt-2">
+            <p class="text-text-secondary text-lg mt-2">
               Профессиональная переподготовка по гирудотерапии. Обучение у ведущих специалистов России.
             </p>
           </div>
         </div>
 
         <div class="border-t border-warm-dark/30 mt-6 pt-6">
-          <h4 class="font-semibold text-deep">Научный руководитель</h4>
-          <p class="text-text-secondary mt-1">
+          <h4 class="font-semibold text-deep text-lg">Научный руководитель</h4>
+          <p class="text-text-secondary text-lg mt-1">
             <span class="font-semibold">Наприенко Маргарита Валентиновна</span> — доктор медицинских наук, профессор кафедры нелекарственных методов лечения и клинической физиологии Сеченовского университета. Ведущий специалист России по гирудотерапии.
           </p>
         </div>
 
         <blockquote class="border-l-4 border-primary pl-4 mt-6">
-          <p class="text-text-secondary italic">
+          <p class="text-text-secondary italic text-lg">
             «Гирудотерапия — это не альтернатива медицине, а её дополнение. Я использую пиявок там, где они действительно нужны, в комплексе с основным лечением.»
           </p>
         </blockquote>
@@ -222,18 +222,18 @@ const stories = [
   <!-- Section 6: CTA -->
   <section class="bg-gradient-to-r from-primary to-primary-dark">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 text-center">
-      <h2 class="font-heading text-2xl md:text-3xl font-bold text-white">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">
         Запишитесь на консультацию по гирудотерапии
       </h2>
-      <p class="text-white/80 mt-4">
+      <p class="text-white/80 text-xl mt-4">
         На первом приёме определим, подходит ли вам этот метод, и составим план лечения.
       </p>
-      <p class="text-white/60 text-sm mt-2">
+      <p class="text-white/60 text-base mt-2">
         Южно-Сахалинск · Индивидуальный приём
       </p>
       <a
         href="/kontakty"
-        class="inline-block bg-white text-primary rounded-xl px-10 py-4 font-semibold hover:bg-warm-light transition mt-8"
+        class="inline-block bg-white text-primary rounded-xl px-10 py-4 text-lg font-semibold hover:bg-warm-light transition mt-8"
       >
         Записаться
       </a>

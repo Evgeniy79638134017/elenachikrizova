@@ -5,6 +5,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Base typography */
+body {
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
 /* Scroll animations */
 .animate-on-scroll {
   opacity: 0;
@@ -24,8 +30,8 @@ html {
   --color-warm-light: #F5EFE5;
   --color-warm-dark: #D4C5AD;
   --color-deep: #1E3A5F;
-  --color-text-secondary: #5A6B7D;
-  --color-text-light: #8A9BAD;
+  --color-text-secondary: #4A5568;
+  --color-text-light: #718096;
   --color-bg: #FAFAF8;
   --color-success: #6BAA6B;
   --color-error: #C45C5C;

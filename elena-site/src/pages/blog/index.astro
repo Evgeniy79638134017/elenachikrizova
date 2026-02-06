@@ -28,10 +28,10 @@ const formatDate = (date: Date) => {
   <!-- Mini Hero -->
   <section class="bg-gradient-to-b from-bg to-warm-light">
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
-      <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep">
+      <h1 class="font-heading text-5xl md:text-6xl font-bold text-deep">
         Блог
       </h1>
-      <p class="text-text-secondary text-lg mt-4 max-w-2xl">
+      <p class="text-text-secondary text-xl mt-4 max-w-2xl">
         Полезные статьи о здоровье от врача с 30-летним стажем
       </p>
     </div>
@@ -49,17 +49,17 @@ const formatDate = (date: Date) => {
               </div>
               <div class="p-6 flex flex-col flex-grow">
                 <div class="flex items-center gap-3">
-                  <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">
+                  <span class="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">
                     {categoryLabels[post.data.category]}
                   </span>
                 </div>
-                <time class="text-text-light text-xs mt-2">
+                <time class="text-text-light text-sm mt-2">
                   {formatDate(post.data.date)}
                 </time>
-                <h2 class="font-heading text-lg font-bold text-deep mt-2 group-hover:text-primary transition">
+                <h2 class="font-heading text-xl font-bold text-deep mt-2 group-hover:text-primary transition">
                   {post.data.title}
                 </h2>
-                <p class="text-text-secondary text-sm mt-2 line-clamp-3 flex-grow">
+                <p class="text-text-secondary text-base mt-2 line-clamp-3 flex-grow">
                   {post.data.description}
                 </p>
               </div>

@@ -45,14 +45,14 @@ const personal = [
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p class="text-primary font-semibold text-sm uppercase tracking-wide">Обо мне</p>
-          <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep mt-2">
+          <p class="text-primary font-semibold text-base uppercase tracking-wide">Обо мне</p>
+          <h1 class="font-heading text-5xl md:text-6xl font-bold text-deep mt-2">
             Елена Чекризова
           </h1>
-          <p class="text-text-secondary text-lg mt-4">
+          <p class="text-text-secondary text-xl mt-4">
             Врач-эндокринолог, гирудотерапевт, нутрициолог
           </p>
-          <p class="text-text-light text-sm mt-2">
+          <p class="text-text-light text-base mt-2">
             Высшая квалификационная категория · Южно-Сахалинск
           </p>
         </div>
@@ -68,10 +68,10 @@ const personal = [
   <!-- Section 2: Calling -->
   <section class="bg-white">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         Призвание с детства
       </h2>
-      <article class="mt-12 space-y-6 text-text-secondary text-lg leading-relaxed">
+      <article class="mt-12 space-y-6 text-text-secondary text-xl leading-relaxed">
         <p>
           Когда мне было 6 лет, брат подавился карамелькой. Он задыхался, никого не было дома.
           Я догадалась перевернуть его и постучать по спине — и спасла ему жизнь.
@@ -89,7 +89,7 @@ const personal = [
   <!-- Section 3: Timeline -->
   <section class="bg-warm-light">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         30 лет в медицине
       </h2>
       <div class="mt-12 relative">
@@ -99,8 +99,8 @@ const personal = [
             <div class={`relative flex items-start gap-6 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
               <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full"></div>
               <div class={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-                <p class="text-primary font-bold">{item.year}</p>
-                <p class="text-text-secondary mt-1">{item.description}</p>
+                <p class="text-primary font-bold text-lg">{item.year}</p>
+                <p class="text-text-secondary text-lg mt-1">{item.description}</p>
               </div>
             </div>
           ))}
@@ -112,19 +112,19 @@ const personal = [
   <!-- Section 4: Philosophy -->
   <section class="bg-white">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         Мой подход
       </h2>
       <blockquote class="mt-12 text-center">
-        <p class="font-heading text-2xl md:text-3xl text-deep italic max-w-3xl mx-auto">
+        <p class="font-heading text-3xl md:text-4xl text-deep italic max-w-3xl mx-auto">
           «Путь наименьшей затраты энергии и как быстро выйти из состояния — вот что я ищу для каждого пациента»
         </p>
       </blockquote>
       <div class="grid md:grid-cols-3 gap-8 mt-12">
         {principles.map((item) => (
           <div class="text-center">
-            <h3 class="font-heading text-xl font-semibold text-deep">{item.title}</h3>
-            <p class="text-text-secondary mt-3">{item.description}</p>
+            <h3 class="font-heading text-2xl font-semibold text-deep">{item.title}</h3>
+            <p class="text-text-secondary text-lg mt-3">{item.description}</p>
           </div>
         ))}
       </div>
@@ -134,14 +134,14 @@ const personal = [
   <!-- Section 5: Personal -->
   <section class="bg-warm-light">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-deep text-center">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
         За пределами клиники
       </h2>
       <div class="grid md:grid-cols-2 gap-8 mt-8">
         {personal.map((item) => (
           <div class="bg-white rounded-2xl p-6 shadow-md">
-            <h3 class="font-heading text-lg font-semibold text-deep">{item.title}</h3>
-            <p class="text-text-secondary mt-2">{item.description}</p>
+            <h3 class="font-heading text-xl font-semibold text-deep">{item.title}</h3>
+            <p class="text-text-secondary text-lg mt-2">{item.description}</p>
           </div>
         ))}
       </div>
@@ -151,15 +151,15 @@ const personal = [
   <!-- Section 6: CTA -->
   <section class="bg-gradient-to-r from-primary to-primary-dark">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 text-center">
-      <h2 class="font-heading text-2xl md:text-3xl font-bold text-white">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">
         Готовы начать путь к здоровью?
       </h2>
-      <p class="text-white/80 mt-4">
+      <p class="text-white/80 text-xl mt-4">
         Запишитесь на приём — первый шаг к системному восстановлению
       </p>
       <a
         href="/kontakty"
-        class="inline-block bg-white text-primary rounded-xl px-10 py-4 font-semibold hover:bg-warm-light transition mt-8"
+        class="inline-block bg-white text-primary rounded-xl px-10 py-4 text-lg font-semibold hover:bg-warm-light transition mt-8"
       >
         Записаться на приём
       </a>
