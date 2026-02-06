@@ -2,16 +2,16 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const conditions = [
-  'Щитовидная железа',
-  'Сахарный диабет',
-  'Ожирение',
-  'Метаболический синдром',
-  'Дефицит витамина D',
-  'Железодефицитная анемия',
-  'Гипотиреоз',
-  'Диффузно-токсический зоб',
-  'Надпочечниковая недостаточность',
-  'Дефицитные состояния',
+  { title: 'Щитовидная железа', slug: 'schitovidnaya-zheleza' },
+  { title: 'Сахарный диабет', slug: 'saharnyj-diabet' },
+  { title: 'Ожирение', slug: 'ozhirenie' },
+  { title: 'Метаболический синдром', slug: 'metabolicheskij-sindrom' },
+  { title: 'Дефицит витамина D', slug: 'deficit-vitamina-d' },
+  { title: 'Железодефицитная анемия', slug: 'zhelezodeficitnaya-anemiya' },
+  { title: 'Гипотиреоз', slug: 'gipotireoz' },
+  { title: 'Диффузно-токсический зоб', slug: 'diffuzno-toksicheskij-zob' },
+  { title: 'Надпочечниковая недостаточность', slug: 'nadpochechnikovaya-nedostatochnost' },
+  { title: 'Дефицитные состояния', slug: 'deficitnye-sostoyaniya' },
 ];
 
 const signals = [
@@ -86,9 +86,14 @@ const steps = [
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-12">
         {conditions.map((item) => (
-          <div class="bg-warm-light rounded-xl p-4 text-center">
-            <span class="font-semibold text-deep text-base">{item}</span>
-          </div>
+          <a
+            href={`/uslugi/endokrinologiya/${item.slug}`}
+            class="bg-warm-light rounded-xl p-5 text-center hover:bg-primary/10 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group block"
+          >
+            <span class="font-semibold text-deep text-lg group-hover:text-primary transition">
+              {item.title}
+            </span>
+          </a>
         ))}
       </div>
 
