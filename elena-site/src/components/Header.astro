@@ -21,19 +21,19 @@ const mobileNavLinks = [
 ---
 
 <header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
-  <div class="max-w-6xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 h-20 md:h-24 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex flex-col">
-      <span class="font-heading font-semibold text-deep text-lg">Елена Чекризова</span>
-      <span class="font-body text-text-secondary text-xs">врач-эндокринолог</span>
+      <span class="font-heading font-semibold text-deep text-xl md:text-2xl">Елена Чекризова</span>
+      <span class="font-body text-text-secondary text-sm md:text-base">врач-эндокринолог</span>
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex gap-6">
+    <nav class="hidden md:flex gap-8">
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="text-sm text-text-secondary hover:text-primary transition"
+          class="text-base md:text-lg text-text-secondary hover:text-primary transition"
         >
           {link.label}
         </a>
@@ -43,7 +43,7 @@ const mobileNavLinks = [
     <!-- Desktop CTA -->
     <a
       href="/kontakty"
-      class="hidden md:block bg-primary text-white rounded-xl px-6 py-2.5 text-sm font-semibold hover:bg-primary-dark transition"
+      class="hidden md:block bg-primary text-white rounded-xl px-8 py-3 text-base md:text-lg font-semibold hover:bg-primary-dark transition"
     >
       Записаться
     </a>
@@ -54,9 +54,9 @@ const mobileNavLinks = [
       class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
       aria-label="Открыть меню"
     >
-      <span class="w-6 h-0.5 bg-deep transition-all"></span>
-      <span class="w-6 h-0.5 bg-deep transition-all"></span>
-      <span class="w-6 h-0.5 bg-deep transition-all"></span>
+      <span class="w-8 h-1 bg-deep transition-all"></span>
+      <span class="w-8 h-1 bg-deep transition-all"></span>
+      <span class="w-8 h-1 bg-deep transition-all"></span>
     </button>
   </div>
 </header>
@@ -65,17 +65,17 @@ const mobileNavLinks = [
 <div id="mobile-menu" class="fixed inset-0 bg-white z-50 hidden">
   <div class="flex flex-col h-full">
     <!-- Mobile Menu Header -->
-    <div class="flex items-center justify-between px-4 h-16">
+    <div class="flex items-center justify-between px-4 h-20">
       <a href="/" class="flex flex-col">
-        <span class="font-heading font-semibold text-deep text-lg">Елена Чекризова</span>
-        <span class="font-body text-text-secondary text-xs">врач-эндокринолог</span>
+        <span class="font-heading font-semibold text-deep text-xl">Елена Чекризова</span>
+        <span class="font-body text-text-secondary text-sm">врач-эндокринолог</span>
       </a>
       <button
         id="close-btn"
         class="flex items-center justify-center w-10 h-10"
         aria-label="Закрыть меню"
       >
-        <svg class="w-6 h-6 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-8 h-8 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
@@ -86,7 +86,7 @@ const mobileNavLinks = [
       {mobileNavLinks.map((link) => (
         <a
           href={link.href}
-          class="text-xl text-deep hover:text-primary transition"
+          class="text-2xl text-deep hover:text-primary transition"
         >
           {link.label}
         </a>
