@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const services = [
+  {
+    title: 'Эндокринология',
+    description: 'Щитовидная железа, диабет, ожирение, метаболический синдром, дефицитные состояния. 30 лет опыта, включая редкие диагнозы.',
+    href: '/uslugi/endokrinologiya',
+    icon: '🦋',
+    features: ['Щитовидная железа', 'Сахарный диабет', 'Ожирение', 'Дефициты витаминов'],
+  },
+  {
+    title: 'Гирудотерапия',
+    description: 'Лечение пиявками — 180+ ферментов для восстановления. 15+ лет практики, обучение в Сеченовском университете.',
+    href: '/uslugi/girudoterapiya',
+    icon: '💧',
+    features: ['Варикоз', 'Тромбофлебит', 'Гипертония', 'Суставы'],
+  },
+  {
+    title: 'Нутрициология',
+    description: 'Клеточное питание и восполнение дефицитов. Индивидуальный подбор нутрицевтиков на основе анализов.',
+    href: '/uslugi/nutriciologiya',
+    icon: '🌿',
+    features: ['Восполнение дефицитов', 'Детокс-программы', 'Клеточное питание', 'Системный подход'],
+  },
+];
+---
+
+<BaseLayout
+  title="Услуги"
+  description="Эндокринология, гирудотерапия, нутрициология. Три направления — один системный подход к здоровью. Врач с 30-летним стажем."
+>
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+
+      <div class="text-center mb-16">
+        <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep">
+          Услуги
+        </h1>
+        <p class="text-text-secondary text-xl mt-6 max-w-3xl mx-auto">
+          Три направления, которые работают вместе. Каждое усиливает эффект остальных.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <a
+            href={service.href}
+            class="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group block"
+          >
+            <div class="text-5xl mb-6">{service.icon}</div>
+
+            <h2 class="font-heading text-2xl font-bold text-deep group-hover:text-primary transition">
+              {service.title}
+            </h2>
+
+            <p class="text-text-secondary text-lg mt-4 leading-relaxed">
+              {service.description}
+            </p>
+
+            <ul class="mt-6 space-y-2">
+              {service.features.map((feature) => (
+                <li class="flex items-center gap-2 text-text-secondary">
+                  <span class="text-primary">✓</span>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-8 text-primary font-semibold group-hover:translate-x-2 transition-transform">
+              Подробнее →
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-16 text-center">
+        <p class="text-text-secondary text-lg mb-6">
+          Не знаете, какая услуга вам нужна?
+        </p>
+        <a
+          href="/kontakty"
+          class="inline-block bg-primary text-white rounded-xl px-10 py-4 text-lg font-semibold hover:bg-primary-dark transition"
+        >
+          Запишитесь на консультацию
+        </a>
+        <p class="text-text-light mt-4">
+          Разберёмся вместе и составим план
+        </p>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
