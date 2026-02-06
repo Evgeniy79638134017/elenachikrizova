@@ -1,0 +1,24 @@
+---
+interface Props {
+  items: Array<{ label: string; href?: string }>;
+}
+
+const { items } = Astro.props;
+---
+
+<nav aria-label="Хлебные крошки" class="mb-8">
+  <ol class="flex flex-wrap items-center gap-2 text-base text-text-secondary">
+    {items.map((item, index) => (
+      <li class="flex items-center gap-2">
+        {index > 0 && <span class="text-text-light">→</span>}
+        {item.href ? (
+          <a href={item.href} class="hover:text-primary transition">
+            {item.label}
+          </a>
+        ) : (
+          <span class="text-deep font-medium">{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

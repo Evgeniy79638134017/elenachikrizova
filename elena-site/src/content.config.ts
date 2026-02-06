@@ -24,4 +24,26 @@ const cases = defineCollection({
   }),
 });
 
-export const collections = { blog, cases };
+const conditions = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    service: z.enum(['endokrinologiya', 'girudoterapiya', 'nutriciologiya']),
+    // SEO
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
+    keywords: z.array(z.string()).optional(),
+    // Контент
+    symptoms: z.array(z.string()).optional(),
+    riskFactors: z.array(z.string()).optional(),
+    tests: z.array(z.string()).optional(),
+    // Связи
+    relatedConditions: z.array(z.string()).optional(),
+    // Мета
+    order: z.number().default(0),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog, cases, conditions };
