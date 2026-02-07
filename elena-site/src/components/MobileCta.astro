@@ -1,0 +1,46 @@
+---
+---
+
+<div id="mobile-cta" class="fixed bottom-0 inset-x-0 p-4 bg-white/95 backdrop-blur-md border-t border-warm-dark/10 z-50 lg:hidden transition-transform duration-300">
+  <a
+    href="/kontakty"
+    class="btn-hover flex items-center justify-center gap-2 w-full py-4 bg-primary text-white text-lg font-semibold rounded-xl shadow-lg"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+    Записаться на приём
+  </a>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileCta = document.getElementById('mobile-cta');
+
+    // Скрыть на странице контактов
+    if (window.location.pathname === '/kontakty' || window.location.pathname === '/kontakty/') {
+      mobileCta?.remove();
+      return;
+    }
+
+    // Скрыть при скролле вверх, показать при скролле вниз
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll <= 100) {
+        // Вверху страницы — показать
+        mobileCta?.classList.remove('translate-y-full');
+      } else if (currentScroll > lastScroll) {
+        // Скролл вниз — показать
+        mobileCta?.classList.remove('translate-y-full');
+      } else {
+        // Скролл вверх — скрыть
+        mobileCta?.classList.add('translate-y-full');
+      }
+
+      lastScroll = currentScroll;
+    }, { passive: true });
+  });
+</script>
