@@ -11,11 +11,11 @@ interface Props {
 
 const {
   title,
-  description = 'Врач-эндокринолог Елена Чекризова — 30 лет опыта. Эндокринология, гирудотерапия, нутрициология. Южно-Сахалинск.'
+  description = 'Врач-эндокринолог Елена Чикризова — 30 лет опыта. Эндокринология, гирудотерапия, нутрициология. Южно-Сахалинск.'
 } = Astro.props;
 
-const defaultTitle = 'Елена Чекризова — врач-эндокринолог, Южно-Сахалинск';
-const pageTitle = title ? `${title} | Елена Чекризова` : defaultTitle;
+const defaultTitle = 'Елена Чикризова — врач-эндокринолог, Южно-Сахалинск';
+const pageTitle = title ? `${title} | Елена Чикризова` : defaultTitle;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -34,7 +34,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
-    <meta property="og:site_name" content="Елена Чекризова" />
+    <meta property="og:site_name" content="Елена Чикризова" />
     <meta property="og:url" content={canonicalURL} />
 
     <!-- Twitter -->
