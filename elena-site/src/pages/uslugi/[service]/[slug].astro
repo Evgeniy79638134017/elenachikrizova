@@ -18,6 +18,29 @@ export async function getStaticPaths() {
 const { condition } = Astro.props;
 const { Content } = await render(condition);
 
+// Получаем названия связанных статей
+const allConditions = await getCollection('conditions');
+
+function getRelatedArticles(slugs: string[], service: string) {
+  if (!slugs || slugs.length === 0) return [];
+
+  return slugs.map(slug => {
+    const found = allConditions.find(
+      c => c.slug === `${service}/${slug}` || c.slug.endsWith(`/${slug}`)
+    );
+    return {
+      slug: slug,
+      title: found?.data.title || slug.replace(/-/g, ' '),
+      href: `/uslugi/${service}/${slug}`
+    };
+  }).filter(item => item.title);
+}
+
+const relatedArticles = getRelatedArticles(
+  condition.data.relatedConditions || [],
+  condition.data.service
+);
+
 const serviceLabels: Record<string, string> = {
   endokrinologiya: 'Эндокринология',
   girudoterapiya: 'Гирудотерапия',
@@ -132,20 +155,20 @@ const schemaData = {
       </div>
 
       <!-- Related Conditions -->
-      {condition.data.relatedConditions && condition.data.relatedConditions.length > 0 && (
-        <div class="mt-12">
+      {relatedArticles.length > 0 && (
+        <section class="mt-12 pt-12 border-t border-warm-dark/20">
           <h2 class="font-heading text-2xl font-bold text-deep mb-6">Связанные темы</h2>
           <div class="flex flex-wrap gap-3">
-            {condition.data.relatedConditions.map((slug) => (
+            {relatedArticles.map((article) => (
               <a
-                href={`/uslugi/${condition.data.service}/${slug}`}
+                href={article.href}
                 class="bg-warm-light text-deep px-4 py-2 rounded-full hover:bg-primary hover:text-white transition text-base"
               >
-                {slug.replace(/-/g, ' ')}
+                {article.title}
               </a>
             ))}
           </div>
-        </div>
+        </section>
       )}
     </div>
   </article>
