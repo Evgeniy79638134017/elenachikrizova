@@ -86,7 +86,7 @@ const mobileNavLinks = [
     <!-- Burger Button -->
     <button
       id="menu-toggle"
-      class="lg:hidden flex flex-col justify-center items-center w-10 h-10 relative z-50"
+      class="lg:hidden flex flex-col justify-center items-center w-10 h-10 relative z-50 cursor-pointer"
       aria-label="Открыть меню"
     >
       <span class="burger-line w-7 h-0.5 bg-deep rounded-full transition-all duration-300 ease-out"></span>
@@ -123,7 +123,7 @@ const mobileNavLinks = [
     {mobileNavLinks.map((link, index) => (
       <a
         href={link.href}
-        class="mobile-nav-link text-deep text-2xl font-medium hover:text-primary transition-colors duration-200 opacity-0 translate-y-4"
+        class="mobile-nav-link text-deep text-2xl font-medium hover:text-primary transition-colors duration-200 opacity-0 translate-y-4 cursor-pointer"
         style={`transition-delay: ${index * 50}ms`}
       >
         {link.label}
@@ -135,7 +135,7 @@ const mobileNavLinks = [
   <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-warm-dark/10">
     <a
       href="/kontakty"
-      class="mobile-nav-link flex items-center justify-center gap-2 w-full py-4 bg-primary text-white text-lg font-semibold rounded-xl opacity-0 translate-y-4"
+      class="mobile-nav-link flex items-center justify-center gap-2 w-full py-4 bg-primary text-white text-lg font-semibold rounded-xl opacity-0 translate-y-4 cursor-pointer"
       style="transition-delay: 400ms"
     >
       Записаться
@@ -144,87 +144,108 @@ const mobileNavLinks = [
 </div>
 
 <script>
-  function initMobileMenu() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const menuClose = document.getElementById('menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = mobileMenu?.querySelectorAll('.mobile-nav-link');
-    const burgerLines = menuToggle?.querySelectorAll('.burger-line');
+  (function() {
+    let initialized = false;
 
-    if (!menuToggle || !mobileMenu) return;
+    function initMobileMenu() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const menuClose = document.getElementById('menu-close');
+      const mobileMenu = document.getElementById('mobile-menu');
 
-    function openMenu() {
-      // Показываем меню
-      mobileMenu.classList.remove('opacity-0', 'invisible');
-      mobileMenu.classList.add('opacity-100', 'visible');
+      if (!menuToggle || !mobileMenu) return;
 
-      // Анимируем бургер в крестик
-      if (burgerLines && burgerLines.length === 3) {
-        burgerLines[0].classList.add('rotate-45', 'translate-y-2');
-        burgerLines[1].classList.add('opacity-0', 'scale-0');
-        burgerLines[2].classList.add('-rotate-45', '-translate-y-2');
+      // Предотвращаем повторную инициализацию
+      if (menuToggle.dataset.initialized === 'true') return;
+      menuToggle.dataset.initialized = 'true';
+
+      const navLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
+      const burgerLines = menuToggle.querySelectorAll('.burger-line');
+
+      function openMenu() {
+        // Показываем меню
+        mobileMenu.classList.remove('opacity-0', 'invisible');
+        mobileMenu.classList.add('opacity-100', 'visible');
+
+        // Анимируем бургер в крестик
+        if (burgerLines && burgerLines.length === 3) {
+          burgerLines[0].classList.add('rotate-45', 'translate-y-2');
+          burgerLines[1].classList.add('opacity-0', 'scale-0');
+          burgerLines[2].classList.add('-rotate-45', '-translate-y-2');
+        }
+
+        // Анимируем пункты меню
+        navLinks.forEach(link => {
+          link.classList.remove('opacity-0', 'translate-y-4');
+          link.classList.add('opacity-100', 'translate-y-0');
+        });
+
+        // Блокируем скролл
+        document.body.style.overflow = 'hidden';
+        menuToggle.setAttribute('aria-label', 'Закрыть меню');
       }
 
-      // Анимируем пункты меню
-      navLinks?.forEach(link => {
-        link.classList.remove('opacity-0', 'translate-y-4');
-        link.classList.add('opacity-100', 'translate-y-0');
+      function closeMenu() {
+        // Скрываем пункты сначала
+        navLinks.forEach(link => {
+          link.classList.add('opacity-0', 'translate-y-4');
+          link.classList.remove('opacity-100', 'translate-y-0');
+        });
+
+        // Анимируем крестик обратно в бургер
+        if (burgerLines && burgerLines.length === 3) {
+          burgerLines[0].classList.remove('rotate-45', 'translate-y-2');
+          burgerLines[1].classList.remove('opacity-0', 'scale-0');
+          burgerLines[2].classList.remove('-rotate-45', '-translate-y-2');
+        }
+
+        // Скрываем меню с задержкой
+        setTimeout(() => {
+          mobileMenu.classList.add('opacity-0', 'invisible');
+          mobileMenu.classList.remove('opacity-100', 'visible');
+        }, 200);
+
+        // Разблокируем скролл
+        document.body.style.overflow = '';
+        menuToggle.setAttribute('aria-label', 'Открыть меню');
+      }
+
+      function toggleMenu(e) {
+        e.stopPropagation();
+        const isOpen = mobileMenu.classList.contains('opacity-100');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      }
+
+      menuToggle.addEventListener('click', toggleMenu);
+      menuClose?.addEventListener('click', closeMenu);
+
+      // Закрытие при клике на ссылку
+      navLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
       });
 
-      // Блокируем скролл
-      document.body.style.overflow = 'hidden';
-      menuToggle.setAttribute('aria-label', 'Закрыть меню');
+      // Закрытие по Escape (только один раз)
+      if (!initialized) {
+        initialized = true;
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('opacity-100')) {
+            closeMenu();
+          }
+        });
+      }
     }
 
-    function closeMenu() {
-      // Скрываем пункты сначала
-      navLinks?.forEach(link => {
-        link.classList.add('opacity-0', 'translate-y-4');
-        link.classList.remove('opacity-100', 'translate-y-0');
-      });
-
-      // Анимируем крестик обратно в бургер
-      if (burgerLines && burgerLines.length === 3) {
-        burgerLines[0].classList.remove('rotate-45', 'translate-y-2');
-        burgerLines[1].classList.remove('opacity-0', 'scale-0');
-        burgerLines[2].classList.remove('-rotate-45', '-translate-y-2');
-      }
-
-      // Скрываем меню с задержкой
-      setTimeout(() => {
-        mobileMenu.classList.add('opacity-0', 'invisible');
-        mobileMenu.classList.remove('opacity-100', 'visible');
-      }, 200);
-
-      // Разблокируем скролл
-      document.body.style.overflow = '';
-      menuToggle.setAttribute('aria-label', 'Открыть меню');
+    // Инициализация при загрузке
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMobileMenu);
+    } else {
+      initMobileMenu();
     }
 
-    menuToggle.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.contains('opacity-100');
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-
-    menuClose?.addEventListener('click', closeMenu);
-
-    // Закрытие при клике на ссылку
-    navLinks?.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    // Закрытие по Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('opacity-100')) {
-        closeMenu();
-      }
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', initMobileMenu);
-  document.addEventListener('astro:page-load', initMobileMenu);
+    // Реинициализация после View Transitions
+    document.addEventListener('astro:page-load', initMobileMenu);
+  })();
 </script>
