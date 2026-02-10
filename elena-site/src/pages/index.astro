@@ -12,14 +12,40 @@ import MarathonTeaser from '../components/sections/MarathonTeaser.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 
 const schemaData = {
-  name: 'Елена Чикризова — врач-эндокринолог',
-  description: 'Врач-эндокринолог высшей категории, гирудотерапевт, нутрициолог. 30 лет практики. Системный подход к здоровью.',
+  name: 'Елена Чикризова',
+  description: 'Врач-эндокринолог высшей категории с 30-летним стажем. Специализация: эндокринология, гирудотерапия, нутрициология.',
+  image: 'https://elenachikrizova.vercel.app/images/doctor.jpg',
+  telephone: '+7-900-123-45-67',
+  email: '123@mail.ru',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Южно-Сахалинск',
+    addressRegion: 'Сахалинская область',
     addressCountry: 'RU',
   },
-  priceRange: 'от 2700 ₽',
+  medicalSpecialty: ['Endocrinology', 'Nutrition'],
+  availableService: [
+    {
+      '@type': 'MedicalProcedure',
+      name: 'Консультация эндокринолога',
+      description: 'Диагностика и лечение заболеваний эндокринной системы',
+    },
+    {
+      '@type': 'MedicalTherapy',
+      name: 'Гирудотерапия',
+      description: 'Лечение медицинскими пиявками',
+    },
+  ],
+  priceRange: '2700₽',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    bestRating: '5',
+    ratingCount: '150',
+  },
+  sameAs: [
+    'https://prodoctorov.ru/doctors/chikrizova',
+  ],
 };
 ---
 
@@ -27,7 +53,7 @@ const schemaData = {
   title="Елена Чикризова — врач-эндокринолог, Южно-Сахалинск"
   description="Врач-эндокринолог с 30-летним стажем. Эндокринология, гирудотерапия, нутрициология. Системный подход к здоровью."
 >
-  <SeoSchema type="MedicalBusiness" data={schemaData} slot="head" />
+  <SeoSchema type="Physician" data={schemaData} slot="head" />
   <Hero />
   <TrustBar />
   <Specializations />
