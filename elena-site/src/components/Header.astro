@@ -96,21 +96,27 @@ const mobileNavLinks = [
   </div>
 </header>
 
-<!-- Mobile Menu -->
+<!-- Mobile Menu Backdrop -->
+<div
+  id="menu-backdrop"
+  data-astro-transition="none"
+  class="fixed inset-0 bg-deep/50 z-40 opacity-0 invisible transition-opacity duration-300 lg:hidden"
+></div>
+
+<!-- Mobile Menu Panel -->
 <div
   id="mobile-menu"
   data-astro-transition="none"
-  class="fixed inset-0 bg-white z-50 opacity-0 invisible transition-all duration-300 ease-out will-change-transform"
+  class="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-50 transform translate-x-full transition-transform duration-300 ease-out will-change-transform lg:hidden shadow-2xl"
 >
   <!-- Header -->
-  <div class="flex items-center justify-between px-4 py-4 border-b border-warm-dark/10">
+  <div class="flex items-center justify-between px-6 py-5 border-b border-warm-dark/10">
     <div>
-      <p class="font-heading text-xl font-bold text-deep">Елена Чикризова</p>
-      <p class="text-text-light text-sm">врач-эндокринолог</p>
+      <p class="font-heading text-lg font-bold text-deep">Меню</p>
     </div>
     <button
       id="menu-close"
-      class="w-10 h-10 flex items-center justify-center"
+      class="w-10 h-10 flex items-center justify-center cursor-pointer"
       aria-label="Закрыть меню"
     >
       <svg class="w-6 h-6 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,11 +126,11 @@ const mobileNavLinks = [
   </div>
 
   <!-- Navigation Links -->
-  <nav class="flex flex-col items-center justify-center h-[calc(100vh-180px)] gap-6">
+  <nav class="flex flex-col px-6 py-6 gap-1">
     {mobileNavLinks.map((link, index) => (
       <a
         href={link.href}
-        class="mobile-nav-link text-deep text-2xl font-medium hover:text-primary transition-colors duration-200 opacity-0 translate-y-4 cursor-pointer"
+        class="mobile-nav-link text-deep text-lg font-medium hover:text-primary hover:bg-warm-light px-4 py-3 rounded-xl transition-all duration-200 opacity-0 translate-x-4 cursor-pointer"
         style={`transition-delay: ${index * 50}ms`}
       >
         {link.label}
@@ -133,12 +139,15 @@ const mobileNavLinks = [
   </nav>
 
   <!-- CTA -->
-  <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-warm-dark/10">
+  <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-warm-dark/10 bg-white">
     <a
       href="/kontakty"
-      class="mobile-nav-link flex items-center justify-center gap-2 w-full py-4 bg-primary text-white text-lg font-semibold rounded-xl opacity-0 translate-y-4 cursor-pointer"
+      class="mobile-nav-link flex items-center justify-center gap-2 w-full py-4 bg-primary text-white text-lg font-semibold rounded-xl opacity-0 translate-x-4 cursor-pointer hover:bg-primary-dark transition-colors"
       style="transition-delay: 400ms"
     >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+      </svg>
       Записаться
     </a>
   </div>
@@ -152,6 +161,7 @@ const mobileNavLinks = [
       const menuToggle = document.getElementById('menu-toggle');
       const menuClose = document.getElementById('menu-close');
       const mobileMenu = document.getElementById('mobile-menu');
+      const menuBackdrop = document.getElementById('menu-backdrop');
 
       if (!menuToggle || !mobileMenu) return;
 
@@ -163,9 +173,13 @@ const mobileNavLinks = [
       const burgerLines = menuToggle.querySelectorAll('.burger-line');
 
       function openMenu() {
-        // Показываем меню
-        mobileMenu.classList.remove('opacity-0', 'invisible');
-        mobileMenu.classList.add('opacity-100', 'visible');
+        // Показываем backdrop
+        menuBackdrop?.classList.remove('opacity-0', 'invisible');
+        menuBackdrop?.classList.add('opacity-100', 'visible');
+
+        // Slide-in меню
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
 
         // Анимируем бургер в крестик
         if (burgerLines && burgerLines.length === 3) {
@@ -174,11 +188,13 @@ const mobileNavLinks = [
           burgerLines[2].classList.add('-rotate-45', '-translate-y-2');
         }
 
-        // Анимируем пункты меню
-        navLinks.forEach(link => {
-          link.classList.remove('opacity-0', 'translate-y-4');
-          link.classList.add('opacity-100', 'translate-y-0');
-        });
+        // Анимируем пункты меню (slide from right)
+        setTimeout(() => {
+          navLinks.forEach(link => {
+            link.classList.remove('opacity-0', 'translate-x-4');
+            link.classList.add('opacity-100', 'translate-x-0');
+          });
+        }, 100);
 
         // Блокируем скролл
         document.body.style.overflow = 'hidden';
@@ -188,8 +204,8 @@ const mobileNavLinks = [
       function closeMenu() {
         // Скрываем пункты сначала
         navLinks.forEach(link => {
-          link.classList.add('opacity-0', 'translate-y-4');
-          link.classList.remove('opacity-100', 'translate-y-0');
+          link.classList.add('opacity-0', 'translate-x-4');
+          link.classList.remove('opacity-100', 'translate-x-0');
         });
 
         // Анимируем крестик обратно в бургер
@@ -199,11 +215,13 @@ const mobileNavLinks = [
           burgerLines[2].classList.remove('-rotate-45', '-translate-y-2');
         }
 
-        // Скрываем меню с задержкой
-        setTimeout(() => {
-          mobileMenu.classList.add('opacity-0', 'invisible');
-          mobileMenu.classList.remove('opacity-100', 'visible');
-        }, 200);
+        // Slide-out меню
+        mobileMenu.classList.add('translate-x-full');
+        mobileMenu.classList.remove('translate-x-0');
+
+        // Скрываем backdrop
+        menuBackdrop?.classList.add('opacity-0', 'invisible');
+        menuBackdrop?.classList.remove('opacity-100', 'visible');
 
         // Разблокируем скролл
         document.body.style.overflow = '';
@@ -212,7 +230,7 @@ const mobileNavLinks = [
 
       function toggleMenu(e) {
         e.stopPropagation();
-        const isOpen = mobileMenu.classList.contains('opacity-100');
+        const isOpen = !mobileMenu.classList.contains('translate-x-full');
         if (isOpen) {
           closeMenu();
         } else {
@@ -222,6 +240,7 @@ const mobileNavLinks = [
 
       menuToggle.addEventListener('click', toggleMenu);
       menuClose?.addEventListener('click', closeMenu);
+      menuBackdrop?.addEventListener('click', closeMenu);
 
       // Закрытие при клике на ссылку
       navLinks.forEach(link => {
@@ -232,7 +251,7 @@ const mobileNavLinks = [
       if (!initialized) {
         initialized = true;
         document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && mobileMenu.classList.contains('opacity-100')) {
+          if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
             closeMenu();
           }
         });
