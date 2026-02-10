@@ -1,0 +1,51 @@
+---
+---
+
+<!-- Desktop floating button - показывается только на lg+ -->
+<div id="floating-cta" class="hidden lg:block fixed bottom-8 right-8 z-40 opacity-0 translate-y-4 transition-all duration-300">
+  <a
+    href="/kontakty"
+    class="group flex items-center gap-3 bg-primary hover:bg-primary-dark text-white pl-5 pr-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+  >
+    <!-- Иконка календаря -->
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+    </svg>
+    <span class="font-semibold">Записаться</span>
+  </a>
+</div>
+
+<script>
+  function initFloatingCta() {
+    const floatingCta = document.getElementById('floating-cta');
+    if (!floatingCta) return;
+
+    // Скрыть на странице контактов
+    if (window.location.pathname === '/kontakty' || window.location.pathname === '/kontakty/') {
+      floatingCta.remove();
+      return;
+    }
+
+    // Показать после скролла 400px
+    const showAfter = 400;
+
+    function toggleVisibility() {
+      if (window.scrollY > showAfter) {
+        floatingCta.classList.remove('opacity-0', 'translate-y-4');
+        floatingCta.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        floatingCta.classList.add('opacity-0', 'translate-y-4');
+        floatingCta.classList.remove('opacity-100', 'translate-y-0');
+      }
+    }
+
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+    toggleVisibility(); // Проверить при загрузке
+  }
+
+  // Инициализация
+  document.addEventListener('DOMContentLoaded', initFloatingCta);
+
+  // Реинициализация после View Transitions
+  document.addEventListener('astro:page-load', initFloatingCta);
+</script>

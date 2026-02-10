@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileCta from '../components/MobileCta.astro';
+import FloatingCta from '../components/FloatingCta.astro';
 
 interface Props {
   title?: string;
@@ -56,6 +57,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </main>
     <Footer />
     <MobileCta />
+    <FloatingCta />
     <script src="/scripts/animations.js" is:inline></script>
   </body>
 </html>
