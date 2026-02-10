@@ -14,7 +14,7 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  function initMobileCta() {
     const mobileCta = document.getElementById('mobile-cta');
 
     // Скрыть на странице контактов
@@ -42,5 +42,8 @@
 
       lastScroll = currentScroll;
     }, { passive: true });
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', initMobileCta);
+  document.addEventListener('astro:page-load', initMobileCta);
 </script>
