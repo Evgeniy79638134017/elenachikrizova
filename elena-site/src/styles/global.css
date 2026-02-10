@@ -162,3 +162,14 @@ body {
     padding-bottom: 80px;
   }
 }
+
+/* ===== MOBILE MENU ANIMATIONS ===== */
+.burger-line {
+  transform-origin: center;
+}
+
+.mobile-nav-link {
+  transition: opacity 0.4s var(--ease-premium),
+              transform 0.4s var(--ease-premium),
+              color 0.2s ease;
+}

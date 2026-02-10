@@ -83,83 +83,148 @@ const mobileNavLinks = [
       Записаться
     </a>
 
-    <!-- Mobile Burger Button -->
+    <!-- Burger Button -->
     <button
-      id="burger-btn"
-      class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+      id="menu-toggle"
+      class="lg:hidden flex flex-col justify-center items-center w-10 h-10 relative z-50"
       aria-label="Открыть меню"
     >
-      <span class="w-8 h-1 bg-deep transition-all"></span>
-      <span class="w-8 h-1 bg-deep transition-all"></span>
-      <span class="w-8 h-1 bg-deep transition-all"></span>
+      <span class="burger-line w-7 h-0.5 bg-deep rounded-full transition-all duration-300 ease-out"></span>
+      <span class="burger-line w-7 h-0.5 bg-deep rounded-full transition-all duration-300 ease-out mt-1.5"></span>
+      <span class="burger-line w-7 h-0.5 bg-deep rounded-full transition-all duration-300 ease-out mt-1.5"></span>
     </button>
   </div>
 </header>
 
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="fixed inset-0 bg-white z-50 hidden">
-  <div class="flex flex-col h-full">
-    <!-- Mobile Menu Header -->
-    <div class="flex items-center justify-between px-4 h-20">
-      <a href="/" class="flex flex-col">
-        <span class="font-heading font-semibold text-deep text-xl">Елена Чикризова</span>
-        <span class="font-body text-text-secondary text-sm">врач-эндокринолог</span>
-      </a>
-      <button
-        id="close-btn"
-        class="flex items-center justify-center w-10 h-10"
-        aria-label="Закрыть меню"
-      >
-        <svg class="w-8 h-8 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
+<div
+  id="mobile-menu"
+  class="fixed inset-0 bg-white z-50 opacity-0 invisible transition-all duration-300 ease-out"
+>
+  <!-- Header -->
+  <div class="flex items-center justify-between px-4 py-4 border-b border-warm-dark/10">
+    <div>
+      <p class="font-heading text-xl font-bold text-deep">Елена Чикризова</p>
+      <p class="text-text-light text-sm">врач-эндокринолог</p>
     </div>
+    <button
+      id="menu-close"
+      class="w-10 h-10 flex items-center justify-center"
+      aria-label="Закрыть меню"
+    >
+      <svg class="w-6 h-6 text-deep" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
 
-    <!-- Mobile Menu Links -->
-    <nav class="flex flex-col items-center justify-center flex-1 gap-6">
-      {mobileNavLinks.map((link) => (
-        <a
-          href={link.href}
-          class="text-2xl text-deep hover:text-primary transition"
-        >
-          {link.label}
-        </a>
-      ))}
-    </nav>
-
-    <!-- Mobile Menu CTA -->
-    <div class="p-6">
+  <!-- Navigation Links -->
+  <nav class="flex flex-col items-center justify-center h-[calc(100vh-180px)] gap-6">
+    {mobileNavLinks.map((link, index) => (
       <a
-        href="/kontakty"
-        class="block w-full text-center bg-primary text-white rounded-xl px-6 py-3.5 font-semibold hover:bg-primary-dark transition"
+        href={link.href}
+        class="mobile-nav-link text-deep text-2xl font-medium hover:text-primary transition-colors duration-200 opacity-0 translate-y-4"
+        style={`transition-delay: ${index * 50}ms`}
       >
-        Записаться
+        {link.label}
       </a>
-    </div>
+    ))}
+  </nav>
+
+  <!-- CTA -->
+  <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-warm-dark/10">
+    <a
+      href="/kontakty"
+      class="mobile-nav-link flex items-center justify-center gap-2 w-full py-4 bg-primary text-white text-lg font-semibold rounded-xl opacity-0 translate-y-4"
+      style="transition-delay: 400ms"
+    >
+      Записаться
+    </a>
   </div>
 </div>
 
 <script>
-  const burgerBtn = document.getElementById('burger-btn');
-  const closeBtn = document.getElementById('close-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
+  function initMobileMenu() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = mobileMenu?.querySelectorAll('.mobile-nav-link');
+    const burgerLines = menuToggle?.querySelectorAll('.burger-line');
 
-  burgerBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  });
+    if (!menuToggle || !mobileMenu) return;
 
-  closeBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.add('hidden');
-    document.body.style.overflow = '';
-  });
+    function openMenu() {
+      // Показываем меню
+      mobileMenu.classList.remove('opacity-0', 'invisible');
+      mobileMenu.classList.add('opacity-100', 'visible');
 
-  // Close menu when clicking on a link
-  mobileMenu?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
+      // Анимируем бургер в крестик
+      if (burgerLines && burgerLines.length === 3) {
+        burgerLines[0].classList.add('rotate-45', 'translate-y-2');
+        burgerLines[1].classList.add('opacity-0', 'scale-0');
+        burgerLines[2].classList.add('-rotate-45', '-translate-y-2');
+      }
+
+      // Анимируем пункты меню
+      navLinks?.forEach(link => {
+        link.classList.remove('opacity-0', 'translate-y-4');
+        link.classList.add('opacity-100', 'translate-y-0');
+      });
+
+      // Блокируем скролл
+      document.body.style.overflow = 'hidden';
+      menuToggle.setAttribute('aria-label', 'Закрыть меню');
+    }
+
+    function closeMenu() {
+      // Скрываем пункты сначала
+      navLinks?.forEach(link => {
+        link.classList.add('opacity-0', 'translate-y-4');
+        link.classList.remove('opacity-100', 'translate-y-0');
+      });
+
+      // Анимируем крестик обратно в бургер
+      if (burgerLines && burgerLines.length === 3) {
+        burgerLines[0].classList.remove('rotate-45', 'translate-y-2');
+        burgerLines[1].classList.remove('opacity-0', 'scale-0');
+        burgerLines[2].classList.remove('-rotate-45', '-translate-y-2');
+      }
+
+      // Скрываем меню с задержкой
+      setTimeout(() => {
+        mobileMenu.classList.add('opacity-0', 'invisible');
+        mobileMenu.classList.remove('opacity-100', 'visible');
+      }, 200);
+
+      // Разблокируем скролл
       document.body.style.overflow = '';
+      menuToggle.setAttribute('aria-label', 'Открыть меню');
+    }
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('opacity-100');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
-  });
+
+    menuClose?.addEventListener('click', closeMenu);
+
+    // Закрытие при клике на ссылку
+    navLinks?.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('opacity-100')) {
+        closeMenu();
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initMobileMenu);
+  document.addEventListener('astro:page-load', initMobileMenu);
 </script>
