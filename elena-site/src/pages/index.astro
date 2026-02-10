@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SeoSchema from '../components/SeoSchema.astro';
 import Hero from '../components/sections/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
 import Specializations from '../components/sections/Specializations.astro';
 import Approach from '../components/sections/Approach.astro';
 import Stats from '../components/sections/Stats.astro';
@@ -28,6 +29,7 @@ const schemaData = {
 >
   <SeoSchema type="MedicalBusiness" data={schemaData} slot="head" />
   <Hero />
+  <TrustBar />
   <Specializations />
   <Approach />
   <Stats />
