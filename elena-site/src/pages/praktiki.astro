@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const practices = [
+  {
+    title: 'Динамичные упражнения (крийи)',
+    description: 'Серии движений, которые заряжают энергией, укрепляют тело и активируют эндокринную систему',
+  },
+  {
+    title: 'Дыхательные техники (пранаяма)',
+    description: 'Осознанное дыхание, которое успокаивает ум, снижает кортизол и балансирует нервную систему',
+  },
+  {
+    title: 'Медитации',
+    description: 'Практики внутренней тишины, которые помогают заглянуть вглубь себя и отпустить тревоги',
+  },
+  {
+    title: 'Мантры',
+    description: 'Звуковые вибрации, которые создают особое состояние потока и внутреннего равновесия',
+  },
+];
+---
+
+<BaseLayout
+  title="Кундалини-йога — Елена Чикризова"
+  description="Практика осознанности и внутреннего равновесия. Кундалини-йога: крийи, пранаяма, медитации, мантры."
+>
+  <!-- Section 1: Hero -->
+  <section class="bg-gradient-to-b from-bg to-warm-light">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-24 text-center">
+      <p class="text-primary font-semibold text-base uppercase tracking-wide">Практика осознанности</p>
+      <h1 class="font-heading text-5xl md:text-6xl font-bold text-deep mt-2">
+        Кундалини-йога
+      </h1>
+      <p class="text-text-secondary text-xl mt-4 max-w-2xl mx-auto">
+        Практика осознанности и внутреннего равновесия
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 2: Elena's story -->
+  <section class="bg-white">
+    <div class="max-w-3xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <blockquote class="border-l-4 border-primary pl-6 md:pl-8">
+        <div class="space-y-6 text-text-secondary text-xl leading-relaxed italic">
+          <p>
+            Мне нравится кундалини-йога, потому что она даёт мне ощущение целостности и глубокой связи с собой. Здесь сочетается всё — динамичные упражнения, которые заряжают энергией, дыхательные техники, которые успокаивают ум, и медитации, которые помогают заглянуть вглубь себя.
+          </p>
+          <p>
+            Особенно ценю, что после практики я чувствую себя одновременно расслабленной и наполненной силой. Кундалини-йога помогает мне справляться со стрессом, находить внутреннее равновесие и лучше понимать свои эмоции. Мантры и крийи создают особое состояние, когда отпускаются все тревоги, а в теле появляется приятное ощущение потока энергии.
+          </p>
+          <p>
+            Эта практика научила меня быть более осознанной в повседневной жизни и открыла новые горизонты для личностного и духовного роста.
+          </p>
+        </div>
+        <footer class="text-deep font-semibold text-lg mt-6 not-italic">Елена Чикризова</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Section 3: What the practice includes -->
+  <section class="bg-warm-light">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-28">
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-deep text-center">
+        Что включает практика
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-12">
+        {practices.map((item) => (
+          <div class="bg-white rounded-2xl p-6 shadow-md">
+            <h3 class="font-heading text-xl font-semibold text-deep">{item.title}</h3>
+            <p class="text-text-secondary text-lg mt-2">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: CTA -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 text-center">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">
+        Хотите узнать больше?
+      </h2>
+      <p class="text-white/80 text-xl mt-4">
+        Напишите в Telegram — расскажу о практиках подробнее
+      </p>
+      <a
+        href="https://t.me/+sWVDcnHhddMzOGIy"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-white text-primary rounded-xl px-10 py-4 text-lg font-semibold hover:bg-warm-light transition mt-8"
+      >
+        Написать в Telegram
+      </a>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <section class="bg-bg">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-8">
+      <p class="text-text-light text-sm text-center">
+        Практики осознанности не являются медицинской услугой и не заменяют лечение.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
