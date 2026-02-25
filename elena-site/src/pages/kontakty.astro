@@ -55,7 +55,7 @@ const steps = [
             Заполните форму, и я свяжусь с вами для уточнения времени приёма
           </p>
 
-          <form action="https://formspree.io/f/placeholder" method="POST" class="mt-8 space-y-5">
+          <form id="order-form" class="mt-8 space-y-5">
             <!-- Name -->
             <div>
               <label class="block text-base font-semibold text-deep mb-1.5">Ваше имя *</label>
@@ -91,18 +91,19 @@ const steps = [
               />
             </div>
 
-            <!-- Service -->
+            <!-- Problem -->
             <div>
-              <label class="block text-base font-semibold text-deep mb-1.5">Направление консультации</label>
+              <label class="block text-base font-semibold text-deep mb-1.5">Что беспокоит</label>
               <select
-                name="service"
+                name="problem"
                 class="w-full px-4 py-3 rounded-xl border border-warm-dark/30 bg-white text-deep focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition appearance-none"
               >
-                <option value="">Не определилась</option>
-                <option value="endokrinologiya">Эндокринология</option>
-                <option value="girudoterapiya">Гирудотерапия</option>
-                <option value="nutriciologiya">Нутрициология</option>
-                <option value="maraton">Марафон «Энергия стройности»</option>
+                <option value="">Выберите проблему</option>
+                <option value="Щитовидная железа">Щитовидная железа</option>
+                <option value="Лишний вес">Лишний вес</option>
+                <option value="Сахарный диабет">Сахарный диабет</option>
+                <option value="Усталость">Усталость и упадок сил</option>
+                <option value="Другое">Другое</option>
               </select>
             </div>
 
@@ -132,14 +133,64 @@ const steps = [
               </label>
             </div>
 
+            <!-- Status message -->
+            <div id="form-status" class="hidden rounded-xl px-4 py-3 text-base font-medium"></div>
+
             <!-- Submit -->
             <button
               type="submit"
-              class="btn-hover bg-primary text-white rounded-xl px-10 py-4 font-semibold text-lg hover:bg-primary-dark w-full md:w-auto"
+              id="submit-btn"
+              class="btn-hover bg-primary text-white rounded-xl px-10 py-4 font-semibold text-lg hover:bg-primary-dark w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Отправить заявку
             </button>
           </form>
+
+          <script>
+            const form = document.getElementById('order-form') as HTMLFormElement;
+            const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+            const statusEl = document.getElementById('form-status') as HTMLDivElement;
+
+            form.addEventListener('submit', async (e) => {
+              e.preventDefault();
+
+              const formData = new FormData(form);
+              const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                email: formData.get('email') || '',
+                problem: formData.get('problem') || '',
+                message: formData.get('message') || '',
+              };
+
+              submitBtn.disabled = true;
+              submitBtn.textContent = 'Отправка...';
+              statusEl.classList.add('hidden');
+
+              try {
+                const res = await fetch('/api/submit-order', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(data),
+                });
+
+                if (res.ok) {
+                  window.location.href = '/spasibo';
+                } else {
+                  const result = await res.json();
+                  statusEl.textContent = result.error || 'Ошибка при отправке. Попробуйте ещё раз.';
+                  statusEl.className = 'rounded-xl px-4 py-3 text-base font-medium bg-red-50 text-red-700 border border-red-200';
+                  submitBtn.disabled = false;
+                  submitBtn.textContent = 'Отправить заявку';
+                }
+              } catch {
+                statusEl.textContent = 'Ошибка сети. Проверьте подключение и попробуйте ещё раз.';
+                statusEl.className = 'rounded-xl px-4 py-3 text-base font-medium bg-red-50 text-red-700 border border-red-200';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Отправить заявку';
+              }
+            });
+          </script>
         </div>
 
         <!-- Right: Info Cards -->

@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Заявка отправлена — Елена Чикризова"
+  description="Ваша заявка на консультацию успешно отправлена. Елена свяжется с вами в течение 24 часов."
+>
+  <section class="bg-gradient-to-b from-bg to-warm-light">
+    <div class="max-w-2xl mx-auto px-4 md:px-6 py-20 md:py-32 text-center">
+      <div class="bg-primary/10 w-20 h-20 rounded-full mx-auto flex items-center justify-center">
+        <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+      </div>
+
+      <h1 class="font-heading text-4xl md:text-5xl font-bold text-deep mt-8">
+        Заявка отправлена!
+      </h1>
+
+      <p class="text-text-secondary text-xl mt-6 leading-relaxed">
+        Спасибо за обращение. Елена свяжется с вами в течение 24 часов для уточнения деталей.
+      </p>
+
+      <div class="bg-white rounded-2xl p-6 mt-10 shadow-md">
+        <p class="text-primary text-3xl font-bold font-heading">8 900 &#8381;</p>
+        <p class="text-text-secondary text-base mt-1">Стоимость онлайн-консультации с протоколом</p>
+      </div>
+
+      <p class="text-text-light text-base mt-8">
+        После подтверждения записи вы получите ссылку на оплату и анкету для заполнения.
+      </p>
+
+      <a
+        href="/"
+        class="inline-block bg-primary text-white rounded-xl px-10 py-4 text-lg font-semibold hover:bg-primary-dark transition mt-8"
+      >
+        Вернуться на главную
+      </a>
+    </div>
+  </section>
+</BaseLayout>
