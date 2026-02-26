@@ -1,7 +1,15 @@
+# robots.txt for elenachikrizova.ru
 User-agent: *
 Allow: /
-Sitemap: https://elenachekrizova.ru/sitemap-index.xml
 
+# Sitemap location
+Sitemap: https://elenachikrizova.ru/sitemap-index.xml
+
+# Disallow utility and legal pages
+Disallow: /spasibo
+Disallow: /anketa
 Disallow: /privacy
 Disallow: /terms
+Disallow: /oferta
 Disallow: /disclaimer
+Disallow: /api/

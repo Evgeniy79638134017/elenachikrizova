@@ -1,5 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { label: 'Главная', href: '/' },
+  { label: 'Услуги', href: '/#uslugi' },
+  { label: 'Эндокринология' },
+];
 
 const conditions = [
   { title: 'Щитовидная железа', slug: 'schitovidnaya-zheleza' },
@@ -44,13 +51,14 @@ const steps = [
 ---
 
 <BaseLayout
-  title="Эндокринология — Елена Чикризова"
-  description="Врач-эндокринолог с 30-летним стажем. Щитовидная железа, диабет, ожирение, дефициты. Онлайн-консультация 8 900 ₽."
+  title="Эндокринолог в Южно-Сахалинске | Лечение щитовидной железы, диабета"
+  description="Консультация эндокринолога. Диагностика и лечение заболеваний щитовидной железы, сахарного диабета, ожирения, гормональных нарушений. Онлайн-консультации."
 >
   <!-- Section 1: Mini Hero -->
   <section class="bg-gradient-to-b from-bg to-warm-light">
-    <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 pt-6 pb-16 md:pt-8 md:pb-24">
+      <Breadcrumbs items={breadcrumbs} />
+      <div class="grid lg:grid-cols-2 gap-12 items-center mt-8">
         <div>
           <span class="bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full">
             30 лет практики

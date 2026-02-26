@@ -12,46 +12,52 @@ import MarathonTeaser from '../components/sections/MarathonTeaser.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 
 const schemaData = {
-  name: 'Елена Чикризова',
-  description: 'Врач-эндокринолог высшей категории с 30-летним стажем. Специализация: эндокринология, гирудотерапия, нутрициология.',
-  image: 'https://elenachikrizova.vercel.app/images/doctor.jpg',
-  telephone: '+7-985-069-35-45',
+  name: 'Елена Васильевна Чикризова',
+  description: 'Врач-эндокринолог высшей категории с 30-летним стажем',
+  image: 'https://elenachikrizova.vercel.app/images/doctor/elena-hero.jpg',
+  telephone: '+7 985 069-35-45',
   email: 'doctor_chikrizova@mail.ru',
+  url: 'https://elenachikrizova.vercel.app',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Южно-Сахалинск',
     addressRegion: 'Сахалинская область',
     addressCountry: 'RU',
   },
-  medicalSpecialty: ['Endocrinology', 'Nutrition'],
+  medicalSpecialty: ['Endocrinology', 'Hirudotherapy'],
   availableService: [
     {
       '@type': 'MedicalProcedure',
-      name: 'Консультация эндокринолога',
-      description: 'Диагностика и лечение заболеваний эндокринной системы',
+      name: 'Онлайн-консультация эндокринолога',
+      description: 'Консультация с протоколом из 4 документов',
+      offers: {
+        '@type': 'Offer',
+        price: '8900',
+        priceCurrency: 'RUB',
+      },
     },
     {
-      '@type': 'MedicalTherapy',
+      '@type': 'MedicalProcedure',
       name: 'Гирудотерапия',
       description: 'Лечение медицинскими пиявками',
     },
   ],
-  priceRange: '8900₽',
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '4.9',
+    ratingValue: '4.3',
+    reviewCount: '24',
     bestRating: '5',
-    ratingCount: '150',
   },
   sameAs: [
-    'https://prodoctorov.ru/doctors/chikrizova',
+    'https://prodoctorov.ru/yuzhno-sahalinsk/vrach/991864-chikrizova/',
+    'https://t.me/+sWVDcnHhddMzOGIy',
   ],
 };
 ---
 
 <BaseLayout
-  title="Елена Чикризова — врач-эндокринолог, Южно-Сахалинск"
-  description="Врач-эндокринолог с 30-летним стажем. Эндокринология, гирудотерапия, нутрициология. Системный подход к здоровью."
+  title="Врач-эндокринолог Елена Чикризова | Онлайн-консультации | Южно-Сахалинск"
+  description="Врач-эндокринолог с 30-летним стажем. Лечение щитовидной железы, диабета, ожирения. Гирудотерапия, нутрициология. Онлайн-консультации по всей России. Запись на приём."
 >
   <SeoSchema type="Physician" data={schemaData} slot="head" />
   <Hero />

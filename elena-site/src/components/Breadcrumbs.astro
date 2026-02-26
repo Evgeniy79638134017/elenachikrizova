@@ -1,24 +1,44 @@
 ---
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
 interface Props {
-  items: Array<{ label: string; href?: string }>;
+  items: BreadcrumbItem[];
 }
 
 const { items } = Astro.props;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    ...(item.href && { item: `https://elenachikrizova.ru${item.href}` }),
+  })),
+};
 ---
 
-<nav aria-label="Хлебные крошки" class="mb-8">
-  <ol class="flex flex-wrap items-center gap-2 text-base text-text-secondary">
+<nav aria-label="Breadcrumb" class="text-sm text-text-light">
+  <ol class="flex flex-wrap items-center gap-1">
     {items.map((item, index) => (
-      <li class="flex items-center gap-2">
-        {index > 0 && <span class="text-text-light">→</span>}
-        {item.href ? (
-          <a href={item.href} class="hover:text-primary transition">
-            {item.label}
-          </a>
-        ) : (
-          <span class="text-deep font-medium">{item.label}</span>
-        )}
-      </li>
+      <>
+        {index > 0 && <span class="mx-1">/</span>}
+        <li>
+          {item.href ? (
+            <a href={item.href} class="hover:text-primary transition">
+              {item.label}
+            </a>
+          ) : (
+            <span class="text-text-secondary">{item.label}</span>
+          )}
+        </li>
+      </>
     ))}
   </ol>
 </nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
